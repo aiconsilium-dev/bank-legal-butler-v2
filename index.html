@@ -1,0 +1,1307 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>뱅크법률집사 — 행원 전용</title>
+<link href="https://fonts.googleapis.com/css2?family=Pretendard:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+:root {
+  --navy-900: #0f172a;
+  --navy-800: #1e293b;
+  --navy-700: #334155;
+  --navy-600: #475569;
+  --navy-500: #64748b;
+  --navy-400: #94a3b8;
+  --navy-300: #cbd5e1;
+  --navy-200: #e2e8f0;
+  --navy-100: #f1f5f9;
+  --navy-50: #f8fafc;
+  --blue-600: #2563eb;
+  --blue-500: #3b82f6;
+  --blue-100: #dbeafe;
+  --blue-50: #eff6ff;
+  --green-600: #059669;
+  --green-100: #d1fae5;
+  --amber-600: #d97706;
+  --amber-100: #fef3c7;
+  --red-600: #dc2626;
+  --red-100: #fee2e2;
+}
+html { -webkit-font-smoothing: antialiased; }
+body {
+  font-family: 'Pretendard', -apple-system, sans-serif;
+  background: var(--navy-50);
+  color: var(--navy-900);
+  min-height: 100vh;
+  line-height: 1.5;
+  font-size: 15px;
+}
+.container { max-width: 1200px; margin: 0 auto; padding: 0 24px; }
+
+/* ==== Header ==== */
+.header {
+  background: #fff;
+  border-bottom: 1px solid var(--navy-200);
+  padding: 14px 0;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+.header-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  cursor: pointer;
+}
+.logo-mark {
+  width: 36px;
+  height: 36px;
+  background: var(--navy-900);
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  font-weight: 800;
+  font-size: 18px;
+}
+.logo-text { font-size: 17px; font-weight: 700; color: var(--navy-900); }
+.logo-sub { font-size: 11px; color: var(--navy-500); margin-top: -2px; letter-spacing: 0.3px; }
+
+.user-info {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  font-size: 13px;
+}
+.inst-badge {
+  background: var(--blue-50);
+  color: var(--blue-600);
+  padding: 4px 10px;
+  border-radius: 6px;
+  font-weight: 600;
+  font-size: 12px;
+}
+.user-name {
+  color: var(--navy-700);
+  font-weight: 500;
+}
+.user-avatar {
+  width: 32px;
+  height: 32px;
+  background: var(--navy-100);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 600;
+  color: var(--navy-700);
+  font-size: 13px;
+}
+
+/* ==== Screens ==== */
+.screen { display: none; padding: 40px 0 80px; }
+.screen.active { display: block; }
+
+/* ==== Hero Search ==== */
+.hero {
+  padding: 48px 0 32px;
+}
+.hero-title {
+  font-size: 26px;
+  font-weight: 700;
+  color: var(--navy-900);
+  text-align: center;
+  margin-bottom: 8px;
+}
+.hero-sub {
+  text-align: center;
+  color: var(--navy-500);
+  font-size: 14px;
+  margin-bottom: 32px;
+}
+.search-box {
+  background: #fff;
+  border: 2px solid var(--navy-200);
+  border-radius: 14px;
+  padding: 28px 28px 20px;
+  box-shadow: 0 4px 20px rgba(15, 23, 42, 0.04);
+  transition: border-color 0.2s;
+}
+.search-box:focus-within { border-color: var(--blue-500); }
+.search-label {
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--navy-900);
+  margin-bottom: 14px;
+}
+.search-input-wrap {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 14px;
+}
+.search-input {
+  flex: 1;
+  border: 1px solid var(--navy-200);
+  background: var(--navy-50);
+  padding: 14px 16px;
+  border-radius: 10px;
+  font-size: 15px;
+  font-family: inherit;
+  outline: none;
+}
+.search-input:focus { background: #fff; border-color: var(--blue-500); }
+.search-btn {
+  background: var(--navy-900);
+  color: #fff;
+  border: none;
+  padding: 14px 28px;
+  border-radius: 10px;
+  font-weight: 600;
+  font-size: 14px;
+  cursor: pointer;
+  font-family: inherit;
+  transition: background 0.2s;
+}
+.search-btn:hover { background: var(--navy-800); }
+.search-footer {
+  font-size: 12px;
+  color: var(--navy-500);
+  text-align: center;
+  padding-top: 12px;
+  border-top: 1px dashed var(--navy-200);
+}
+
+.quick-queries {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  justify-content: center;
+  margin-top: 20px;
+}
+.quick-chip {
+  background: #fff;
+  border: 1px solid var(--navy-200);
+  padding: 8px 14px;
+  border-radius: 20px;
+  font-size: 13px;
+  color: var(--navy-600);
+  cursor: pointer;
+  transition: all 0.15s;
+}
+.quick-chip:hover {
+  border-color: var(--blue-500);
+  color: var(--blue-600);
+  background: var(--blue-50);
+}
+
+/* ==== Shortcut Cards ==== */
+.shortcut-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 14px;
+  margin-top: 32px;
+}
+.shortcut {
+  background: #fff;
+  border: 1px solid var(--navy-200);
+  padding: 20px;
+  border-radius: 12px;
+  cursor: pointer;
+  transition: all 0.15s;
+  text-align: left;
+}
+.shortcut:hover {
+  border-color: var(--navy-900);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(15, 23, 42, 0.08);
+}
+.shortcut-icon {
+  width: 36px;
+  height: 36px;
+  background: var(--navy-100);
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 12px;
+  font-size: 17px;
+}
+.shortcut-title { font-size: 14px; font-weight: 700; color: var(--navy-900); margin-bottom: 4px; }
+.shortcut-desc { font-size: 12px; color: var(--navy-500); }
+
+/* ==== Info Rows ==== */
+.info-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 14px;
+  margin-top: 24px;
+}
+.info-card {
+  background: #fff;
+  border: 1px solid var(--navy-200);
+  border-radius: 12px;
+  padding: 18px 20px;
+}
+.info-card h3 {
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--navy-900);
+  margin-bottom: 12px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+.info-card h3 .dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--blue-600);
+}
+.info-card.alerts h3 .dot { background: var(--amber-600); }
+.info-item {
+  padding: 10px 0;
+  border-bottom: 1px solid var(--navy-100);
+  font-size: 13px;
+  color: var(--navy-700);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  cursor: pointer;
+  transition: color 0.15s;
+}
+.info-item:hover { color: var(--navy-900); }
+.info-item:last-child { border-bottom: none; }
+.info-date { font-size: 11px; color: var(--navy-400); font-family: 'JetBrains Mono', monospace; }
+.info-tag {
+  font-size: 10px;
+  padding: 2px 7px;
+  border-radius: 4px;
+  font-weight: 600;
+}
+.tag-new { background: var(--red-100); color: var(--red-600); }
+.tag-urgent { background: var(--amber-100); color: var(--amber-600); }
+.tag-info { background: var(--blue-100); color: var(--blue-600); }
+
+/* ==== Back button ==== */
+.back-bar {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+.back-btn {
+  background: #fff;
+  border: 1px solid var(--navy-200);
+  padding: 8px 14px;
+  border-radius: 8px;
+  font-size: 13px;
+  color: var(--navy-700);
+  cursor: pointer;
+  font-family: inherit;
+  transition: all 0.15s;
+}
+.back-btn:hover { border-color: var(--navy-900); color: var(--navy-900); }
+.breadcrumb {
+  font-size: 12px;
+  color: var(--navy-500);
+}
+
+/* ==== Search Result ==== */
+.search-result-header {
+  background: #fff;
+  border: 1px solid var(--navy-200);
+  border-radius: 12px;
+  padding: 20px 24px;
+  margin-bottom: 20px;
+}
+.result-query-label { font-size: 11px; color: var(--navy-500); font-weight: 600; letter-spacing: 0.5px; margin-bottom: 6px; }
+.result-query { font-size: 18px; font-weight: 700; color: var(--navy-900); }
+.result-meta {
+  display: flex;
+  gap: 16px;
+  margin-top: 14px;
+  padding-top: 14px;
+  border-top: 1px solid var(--navy-100);
+  font-size: 12px;
+  color: var(--navy-500);
+}
+.result-meta span { display: flex; align-items: center; gap: 4px; }
+
+.answer-blocks { display: flex; flex-direction: column; gap: 14px; }
+.answer-block {
+  background: #fff;
+  border: 1px solid var(--navy-200);
+  border-radius: 12px;
+  padding: 22px 24px;
+  position: relative;
+}
+.answer-block.highlight { border-color: var(--navy-900); border-left: 4px solid var(--navy-900); }
+.block-label {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: var(--navy-100);
+  color: var(--navy-700);
+  padding: 5px 11px;
+  border-radius: 6px;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.3px;
+  margin-bottom: 12px;
+}
+.answer-block.highlight .block-label { background: var(--navy-900); color: #fff; }
+.block-num {
+  width: 18px;
+  height: 18px;
+  background: #fff;
+  color: var(--navy-900);
+  border-radius: 50%;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 10px;
+  font-weight: 800;
+}
+.answer-block.highlight .block-num { background: #fff; color: var(--navy-900); }
+.block-title { font-size: 15px; font-weight: 700; color: var(--navy-900); margin-bottom: 8px; }
+.block-body { font-size: 14px; color: var(--navy-700); line-height: 1.65; margin-bottom: 14px; }
+.block-citation {
+  font-size: 12px;
+  color: var(--navy-500);
+  padding-top: 12px;
+  border-top: 1px solid var(--navy-100);
+  display: flex;
+  justify-content: space-between;
+}
+.confidence {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  color: var(--green-600);
+  font-weight: 600;
+}
+.confidence::before {
+  content: '';
+  width: 6px;
+  height: 6px;
+  background: var(--green-600);
+  border-radius: 50%;
+}
+
+.action-bar {
+  display: flex;
+  gap: 10px;
+  margin-top: 24px;
+  padding-top: 20px;
+  border-top: 1px solid var(--navy-200);
+}
+.action-btn {
+  background: #fff;
+  border: 1px solid var(--navy-300);
+  padding: 12px 20px;
+  border-radius: 10px;
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--navy-700);
+  cursor: pointer;
+  font-family: inherit;
+  transition: all 0.15s;
+}
+.action-btn:hover { border-color: var(--navy-900); color: var(--navy-900); }
+.action-btn.primary { background: var(--navy-900); color: #fff; border-color: var(--navy-900); }
+.action-btn.primary:hover { background: var(--navy-800); }
+
+/* ==== Doc Form ==== */
+.form-card {
+  background: #fff;
+  border: 1px solid var(--navy-200);
+  border-radius: 14px;
+  padding: 32px;
+  margin-bottom: 20px;
+}
+.form-title { font-size: 20px; font-weight: 700; color: var(--navy-900); margin-bottom: 6px; }
+.form-desc { font-size: 13px; color: var(--navy-500); margin-bottom: 28px; }
+.form-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 18px 20px;
+}
+.form-field label {
+  display: block;
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--navy-700);
+  margin-bottom: 6px;
+}
+.form-field label .required { color: var(--red-600); margin-left: 2px; }
+.form-field input,
+.form-field select {
+  width: 100%;
+  border: 1px solid var(--navy-200);
+  padding: 11px 14px;
+  border-radius: 8px;
+  font-size: 14px;
+  font-family: inherit;
+  outline: none;
+  background: #fff;
+  transition: border-color 0.15s;
+}
+.form-field input:focus,
+.form-field select:focus { border-color: var(--blue-500); }
+.form-submit {
+  margin-top: 28px;
+  background: var(--navy-900);
+  color: #fff;
+  border: none;
+  padding: 14px 24px;
+  border-radius: 10px;
+  font-weight: 600;
+  font-size: 14px;
+  cursor: pointer;
+  font-family: inherit;
+  width: 100%;
+  transition: background 0.2s;
+}
+.form-submit:hover { background: var(--navy-800); }
+
+/* ==== Doc Preview ==== */
+.preview-layout {
+  display: grid;
+  grid-template-columns: 1fr 220px;
+  gap: 20px;
+}
+.doc-preview {
+  background: #fff;
+  border: 1px solid var(--navy-200);
+  border-radius: 12px;
+  padding: 48px 56px;
+  min-height: 600px;
+  font-family: 'Nanum Myeongjo', 'Batang', serif;
+}
+.doc-title {
+  text-align: center;
+  font-size: 24px;
+  font-weight: 700;
+  letter-spacing: 8px;
+  margin-bottom: 36px;
+  color: var(--navy-900);
+}
+.doc-party { margin-bottom: 24px; font-size: 15px; line-height: 2; }
+.doc-party strong { display: inline-block; width: 80px; }
+.doc-section { margin-bottom: 20px; font-size: 15px; line-height: 1.9; }
+.doc-section-title { font-weight: 700; margin-bottom: 6px; }
+.doc-body { font-size: 14px; line-height: 1.9; }
+.doc-body ol { margin-left: 20px; margin-top: 6px; }
+.doc-body ol li { margin-bottom: 4px; }
+.doc-total {
+  margin: 20px 0;
+  padding: 14px 0;
+  border-top: 2px solid var(--navy-900);
+  border-bottom: 2px solid var(--navy-900);
+  font-size: 16px;
+  font-weight: 700;
+}
+.doc-footer {
+  margin-top: 40px;
+  font-size: 14px;
+  line-height: 1.9;
+}
+
+.side-actions { display: flex; flex-direction: column; gap: 10px; }
+.side-btn {
+  background: #fff;
+  border: 1px solid var(--navy-200);
+  padding: 14px 16px;
+  border-radius: 10px;
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--navy-700);
+  cursor: pointer;
+  font-family: inherit;
+  text-align: left;
+  transition: all 0.15s;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.side-btn:hover { border-color: var(--navy-900); color: var(--navy-900); }
+.side-btn.primary { background: var(--navy-900); color: #fff; border-color: var(--navy-900); }
+
+/* ==== Calculator ==== */
+.calc-layout {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+}
+.calc-card {
+  background: #fff;
+  border: 1px solid var(--navy-200);
+  border-radius: 14px;
+  padding: 28px;
+}
+.calc-card h3 {
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--navy-500);
+  letter-spacing: 1.5px;
+  margin-bottom: 20px;
+}
+.calc-result-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 14px 0;
+  border-bottom: 1px solid var(--navy-100);
+}
+.calc-result-item:last-of-type { border-bottom: none; }
+.calc-result-label { font-size: 13px; color: var(--navy-600); }
+.calc-result-value { font-size: 15px; font-weight: 600; color: var(--navy-900); font-family: 'JetBrains Mono', monospace; }
+.calc-total {
+  margin-top: 8px;
+  padding: 20px;
+  background: var(--navy-900);
+  color: #fff;
+  border-radius: 10px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.calc-total-label { font-size: 13px; opacity: 0.7; }
+.calc-total-value { font-size: 22px; font-weight: 700; font-family: 'JetBrains Mono', monospace; }
+.calc-legal {
+  margin-top: 16px;
+  padding: 14px 16px;
+  background: var(--navy-50);
+  border-radius: 8px;
+  font-size: 12px;
+  color: var(--navy-600);
+  line-height: 1.7;
+}
+.calc-legal strong { color: var(--navy-900); }
+
+/* ==== Law Search ==== */
+.law-recent {
+  background: #fff;
+  border: 1px solid var(--navy-200);
+  border-radius: 12px;
+  padding: 18px 22px;
+  margin-bottom: 16px;
+}
+.law-recent h4 { font-size: 13px; font-weight: 700; color: var(--navy-900); margin-bottom: 12px; }
+.law-recent-item {
+  display: flex;
+  justify-content: space-between;
+  padding: 7px 0;
+  font-size: 13px;
+  color: var(--navy-700);
+}
+.law-recent-date { font-family: 'JetBrains Mono', monospace; color: var(--navy-400); font-size: 12px; }
+
+.law-result-item {
+  background: #fff;
+  border: 1px solid var(--navy-200);
+  border-radius: 10px;
+  padding: 18px 22px;
+  margin-bottom: 10px;
+}
+.law-result-title { font-size: 15px; font-weight: 700; color: var(--navy-900); margin-bottom: 6px; }
+.law-result-body { font-size: 13px; color: var(--navy-700); line-height: 1.65; margin-bottom: 10px; }
+.law-result-source { font-size: 11px; color: var(--navy-500); }
+
+.ai-summary {
+  background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+  color: #fff;
+  border-radius: 12px;
+  padding: 22px 26px;
+  margin-top: 14px;
+}
+.ai-summary h4 {
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 1.5px;
+  opacity: 0.6;
+  margin-bottom: 10px;
+}
+.ai-summary p { font-size: 14px; line-height: 1.7; }
+
+/* ==== Status tag in doc form ==== */
+.note-box {
+  background: var(--blue-50);
+  border: 1px solid var(--blue-100);
+  border-radius: 8px;
+  padding: 12px 16px;
+  font-size: 13px;
+  color: var(--navy-700);
+  margin-top: 20px;
+  display: flex;
+  gap: 10px;
+  align-items: flex-start;
+}
+.note-icon {
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  background: var(--blue-600);
+  color: #fff;
+  font-size: 11px;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+/* ==== Complete screen ==== */
+.complete-card {
+  background: #fff;
+  border: 1px solid var(--navy-200);
+  border-radius: 14px;
+  padding: 48px 40px;
+  text-align: center;
+  max-width: 560px;
+  margin: 0 auto;
+}
+.complete-check {
+  width: 64px;
+  height: 64px;
+  background: var(--green-100);
+  color: var(--green-600);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 20px;
+  font-size: 28px;
+  font-weight: 700;
+}
+.complete-card h2 { font-size: 22px; font-weight: 700; color: var(--navy-900); margin-bottom: 8px; }
+.complete-card p { font-size: 14px; color: var(--navy-500); margin-bottom: 28px; }
+
+/* ==== Section label ==== */
+.section-label {
+  font-size: 11px;
+  font-weight: 700;
+  color: var(--navy-500);
+  letter-spacing: 1.5px;
+  margin: 32px 0 12px;
+  text-transform: uppercase;
+}
+
+/* ==== Footer ==== */
+.footer {
+  border-top: 1px solid var(--navy-200);
+  padding: 24px 0;
+  margin-top: 40px;
+  font-size: 12px;
+  color: var(--navy-500);
+  text-align: center;
+  background: #fff;
+}
+.footer strong { color: var(--navy-700); }
+
+@media (max-width: 800px) {
+  .shortcut-grid { grid-template-columns: repeat(2, 1fr); }
+  .info-row { grid-template-columns: 1fr; }
+  .form-grid { grid-template-columns: 1fr; }
+  .preview-layout { grid-template-columns: 1fr; }
+  .calc-layout { grid-template-columns: 1fr; }
+  .hero-title { font-size: 22px; }
+}
+</style>
+</head>
+<body>
+
+<!-- ========== HEADER ========== -->
+<header class="header">
+  <div class="container header-inner">
+    <div class="logo" onclick="showScreen('main')">
+      <div class="logo-mark">법</div>
+      <div>
+        <div class="logo-text">뱅크법률집사</div>
+        <div class="logo-sub">감사 사례집 기반 AI · 행원 전용</div>
+      </div>
+    </div>
+    <div class="user-info">
+      <span class="inst-badge">신협</span>
+      <span class="user-name">서울중앙신협 여신업무팀 · 김담당</span>
+      <div class="user-avatar">김</div>
+    </div>
+  </div>
+</header>
+
+<!-- ========== SCREEN: MAIN ========== -->
+<section id="screen-main" class="screen active">
+  <div class="container">
+
+    <div class="hero">
+      <h1 class="hero-title">무엇을 도와드릴까요?</h1>
+      <p class="hero-sub">사례집 · 지침 · 법령 · 판례 인덱스에서 즉시 답변을 제공합니다</p>
+
+      <div class="search-box">
+        <div class="search-label">궁금한 사항을 입력하세요</div>
+        <div class="search-input-wrap">
+          <input type="text" class="search-input" id="mainSearchInput"
+                 placeholder='예) "3개월 연체 시 가압류 절차는?" / "내용증명 양식" / "BIS비율 기준"'
+                 onkeydown="if(event.key==='Enter') runSearch()">
+          <button class="search-btn" onclick="runSearch()">검색</button>
+        </div>
+        <div class="search-footer">사례집 · 지침 · 법령 · 판례 인덱스에서 즉시 검색</div>
+      </div>
+
+      <div class="quick-queries">
+        <div class="quick-chip" onclick="quickQuery('연체 3개월, 담보 부동산 있음, 다음 절차는?')">연체 3개월 담보 부동산 다음 절차</div>
+        <div class="quick-chip" onclick="quickQuery('무담보 대출 연체 60일, 지급명령 신청 가능한지?')">무담보 연체 60일 지급명령</div>
+        <div class="quick-chip" onclick="quickQuery('기한의 이익 상실 요건')">기한의 이익 상실 요건</div>
+        <div class="quick-chip" onclick="quickQuery('BIS비율 기준')">BIS비율 기준</div>
+        <div class="quick-chip" onclick="quickQuery('채권추심법 야간추심 규제')">야간추심 규제</div>
+      </div>
+    </div>
+
+    <div class="section-label">빠른 실행</div>
+    <div class="shortcut-grid">
+      <div class="shortcut" onclick="showScreen('doc-form')">
+        <div class="shortcut-icon">📄</div>
+        <div class="shortcut-title">서류 자동 생성</div>
+        <div class="shortcut-desc">8종 법률 서류 · AI 자동 작성</div>
+      </div>
+      <div class="shortcut" onclick="showScreen('calculator')">
+        <div class="shortcut-icon">🧮</div>
+        <div class="shortcut-title">채권계산기</div>
+        <div class="shortcut-desc">원리금 자동 계산 · 법적 근거 명시</div>
+      </div>
+      <div class="shortcut" onclick="showScreen('law-search')">
+        <div class="shortcut-icon">⚖️</div>
+        <div class="shortcut-title">법령 검색</div>
+        <div class="shortcut-desc">최신 법령 · 고시 · 감독규정</div>
+      </div>
+      <div class="shortcut" onclick="alert('집변 법률상담 — 담당 변호사에게 연결됩니다.')">
+        <div class="shortcut-icon">💬</div>
+        <div class="shortcut-title">집변 법률상담</div>
+        <div class="shortcut-desc">전담 변호사 연결 · 복잡 사안</div>
+      </div>
+    </div>
+
+    <div class="info-row">
+      <div class="info-card">
+        <h3><span class="dot"></span>최근 검색</h3>
+        <div class="info-item" onclick="quickQuery('연체 90일 경매신청 절차')">
+          <span>연체 90일 경매신청 절차</span>
+          <span class="info-date">04.21</span>
+        </div>
+        <div class="info-item" onclick="quickQuery('내용증명 양식 다운로드')">
+          <span>내용증명 양식 다운로드</span>
+          <span class="info-date">04.20</span>
+        </div>
+        <div class="info-item" onclick="quickQuery('가압류 신청 관할법원')">
+          <span>가압류 신청 관할법원</span>
+          <span class="info-date">04.19</span>
+        </div>
+        <div class="info-item" onclick="quickQuery('근저당권자 임의경매 신청 요건')">
+          <span>근저당권자 임의경매 신청 요건</span>
+          <span class="info-date">04.18</span>
+        </div>
+      </div>
+
+      <div class="info-card alerts">
+        <h3><span class="dot"></span>알림 · 업데이트</h3>
+        <div class="info-item">
+          <span>새마을금고 감독기준 개정 (2026.2.9)</span>
+          <span class="info-tag tag-new">신규</span>
+        </div>
+        <div class="info-item">
+          <span>가압류 결정 인용 — 홍OO 건</span>
+          <span class="info-tag tag-info">업데이트</span>
+        </div>
+        <div class="info-item">
+          <span>연체 94일 — 경매 신청 권고</span>
+          <span class="info-tag tag-urgent">긴급</span>
+        </div>
+        <div class="info-item">
+          <span>상호저축은행업 감독규정 개정 (2025.12)</span>
+          <span class="info-tag tag-info">참고</span>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ========== SCREEN: SEARCH RESULT ========== -->
+<section id="screen-search-result" class="screen">
+  <div class="container">
+    <div class="back-bar">
+      <button class="back-btn" onclick="showScreen('main')">← 메인으로</button>
+      <span class="breadcrumb">검색 결과</span>
+    </div>
+
+    <div class="search-result-header">
+      <div class="result-query-label">검색 질의</div>
+      <div class="result-query" id="resultQuery">"연체 3개월, 담보 부동산 있음, 다음 절차는?"</div>
+      <div class="result-meta">
+        <span>📚 사례집 4건</span>
+        <span>📘 지침 2건</span>
+        <span>⚖️ 법령 3건</span>
+        <span>🏛️ 판례 1건</span>
+        <span style="margin-left: auto; color: var(--green-600); font-weight: 600;">● 실시간 인덱스 기준 · 2026-04-22</span>
+      </div>
+    </div>
+
+    <div class="answer-blocks">
+
+      <div class="answer-block highlight">
+        <div class="block-label"><span class="block-num">1</span>사례집 처리 방식</div>
+        <div class="block-title">저축은행중앙회 여신관리 예규 제42호 — 연체채권 관리절차</div>
+        <div class="block-body">
+          담보 부동산(근저당권)이 설정된 경우, <strong>연체 90일 초과 시 임의경매 신청</strong>을 우선 검토합니다.
+          근저당권 설정이 확인되면 별도 집행권원 없이 경매 신청이 가능하며, 채권최고액 범위 내에서 우선변제권이 인정됩니다.
+        </div>
+        <div class="block-citation">
+          <span>출처: 저축은행중앙회 예규 제42호 제3장 제12조</span>
+          <span class="confidence">신뢰도 92%</span>
+        </div>
+      </div>
+
+      <div class="answer-block">
+        <div class="block-label"><span class="block-num">2</span>지침상 규정</div>
+        <div class="block-title">금감원 여신건전성 분류 기준 — 고정이하여신 분류</div>
+        <div class="block-body">
+          3개월 이상 연체 채권은 <strong>"고정" 이하로 분류</strong>합니다.
+          대손충당금 20% 이상 적립이 필요하며, 6개월 초과 시 "회수의문"으로 격하되어 적립률이 50%로 상승합니다.
+        </div>
+        <div class="block-citation">
+          <span>출처: 상호저축은행업 감독규정 제29조 / 금감원 건전성 분류 가이드라인</span>
+          <span class="confidence">신뢰도 95%</span>
+        </div>
+      </div>
+
+      <div class="answer-block">
+        <div class="block-label"><span class="block-num">3</span>회계기준</div>
+        <div class="block-title">K-IFRS 1109 금융자산 손상 — Stage 3 분류</div>
+        <div class="block-body">
+          신용위험이 유의적으로 증가하여 Stage 3으로 분류됩니다.
+          <strong>전체 기간 기대신용손실</strong>을 인식해야 하며, 이자수익은 순장부금액 기준으로 인식합니다.
+        </div>
+        <div class="block-citation">
+          <span>출처: 한국회계기준원 K-IFRS 1109 문단 5.5.3</span>
+          <span class="confidence">신뢰도 98%</span>
+        </div>
+      </div>
+
+      <div class="answer-block">
+        <div class="block-label"><span class="block-num">4</span>유사 사례 · 판례</div>
+        <div class="block-title">대법원 2021다248903 — 근저당권자의 임의경매 신청</div>
+        <div class="block-body">
+          근저당권자는 피담보채무 불이행 시 민사집행법 제264조에 의하여 경매를 신청할 수 있으며,
+          채권최고액 범위 내에서 원금·이자·지연손해금에 대해 우선변제권이 인정된다.
+        </div>
+        <div class="block-citation">
+          <span>출처: 대법원 2021다248903 판결문 / 민사집행법 제264조</span>
+          <span class="confidence">신뢰도 90%</span>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="action-bar">
+      <button class="action-btn primary" onclick="showScreen('doc-form')">임의경매 신청서 생성 →</button>
+      <button class="action-btn" onclick="showScreen('calculator')">채권계산서 생성</button>
+      <button class="action-btn" onclick="alert('집변 변호사 상담 요청 — 담당자에게 연결됩니다.')">집변 변호사 상담</button>
+      <button class="action-btn" style="margin-left: auto;">PDF 저장</button>
+    </div>
+
+  </div>
+</section>
+
+<!-- ========== SCREEN: DOC FORM ========== -->
+<section id="screen-doc-form" class="screen">
+  <div class="container">
+    <div class="back-bar">
+      <button class="back-btn" onclick="showScreen('main')">← 메인으로</button>
+      <span class="breadcrumb">서류 자동 생성 · 지급명령 신청서</span>
+    </div>
+
+    <div class="form-card">
+      <h2 class="form-title">서류 생성: 지급명령 신청서</h2>
+      <p class="form-desc">서류에 들어갈 구체적인 정보를 입력해주세요. <span style="color: var(--red-600);">*</span> 표시는 필수 항목입니다.</p>
+
+      <div class="form-grid">
+        <div class="form-field">
+          <label>채무자명 <span class="required">*</span></label>
+          <input type="text" id="f_debtor" value="홍길동">
+        </div>
+        <div class="form-field">
+          <label>대출 실행일 <span class="required">*</span></label>
+          <input type="date" id="f_loandate" value="2025-01-15">
+        </div>
+        <div class="form-field">
+          <label>계좌번호 <span class="required">*</span></label>
+          <input type="text" id="f_account" value="1234-56-7890123">
+        </div>
+        <div class="form-field">
+          <label>연체 시작일 <span class="required">*</span></label>
+          <input type="date" id="f_overdue" value="2026-02-15">
+        </div>
+        <div class="form-field">
+          <label>원금 (원) <span class="required">*</span></label>
+          <input type="number" id="f_principal" value="50000000">
+        </div>
+        <div class="form-field">
+          <label>지연손해율 (%) <span class="required">*</span></label>
+          <input type="number" id="f_delay" value="15" step="0.1">
+        </div>
+        <div class="form-field">
+          <label>약정 이자율 (%) <span class="required">*</span></label>
+          <input type="number" id="f_rate" value="4.5" step="0.1">
+        </div>
+        <div class="form-field">
+          <label>관할 법원</label>
+          <input type="text" id="f_court" value="서울중앙지방법원">
+        </div>
+      </div>
+
+      <div class="note-box">
+        <div class="note-icon">i</div>
+        <div>AI가 입력 정보를 바탕으로 <strong>지급명령 신청서</strong>와 <strong>채권계산서</strong>를 자동 생성합니다.
+        생성 후 변호사 검토 요청이 가능하며, 법원 표준 양식에 맞춰 PDF로 다운로드됩니다.</div>
+      </div>
+
+      <button class="form-submit" onclick="showScreen('doc-preview')">서류 생성하기 →</button>
+    </div>
+  </div>
+</section>
+
+<!-- ========== SCREEN: DOC PREVIEW ========== -->
+<section id="screen-doc-preview" class="screen">
+  <div class="container">
+    <div class="back-bar">
+      <button class="back-btn" onclick="showScreen('doc-form')">← 수정하기</button>
+      <span class="breadcrumb">서류 미리보기 · 지급명령 신청서</span>
+    </div>
+
+    <div class="preview-layout">
+      <div class="doc-preview">
+        <div class="doc-title">지 급 명 령 신 청 서</div>
+
+        <div class="doc-party">
+          <div><strong>채 권 자:</strong> [신협] 서울중앙신협 (법인)</div>
+          <div><strong>채 무 자:</strong> <span id="p_debtor">홍길동</span></div>
+        </div>
+
+        <div class="doc-section">
+          <div class="doc-section-title">청구 금액: 금 <span id="p_total">50,000,000</span>원</div>
+        </div>
+
+        <div class="doc-section">
+          <div class="doc-section-title">청구 원인</div>
+          <div class="doc-body">
+            채권자는 채무자에 대하여 다음과 같은 채권을 가지고 있습니다.
+            <ol>
+              <li>대출 원금: 금 <span id="p_principal">50,000,000</span>원</li>
+              <li>이자: 금 0원<br>(대출 실행일 <span id="p_loandate">2025.01.15</span>부터 연체 시작일 <span id="p_overdue">2026.02.15</span>까지, 연 <span id="p_rate">4.5</span>%)</li>
+              <li>지연손해금: 금 0원<br>(연체 시작일 2026.02.15부터 현재까지, 연 <span id="p_delay">15</span>%)</li>
+            </ol>
+          </div>
+        </div>
+
+        <div class="doc-total">합 계: 금 <span id="p_total2">50,000,000</span>원</div>
+
+        <div class="doc-footer">
+          위 청구금액을 변제받기 위하여 「민사소송법」 제462조에 의하여<br>
+          이 사건 지급명령을 신청합니다.
+          <br><br><br>
+          <div style="text-align: center;">2026년 4월 22일</div>
+          <br>
+          <div style="text-align: right;">
+            위 채권자 [신협] 서울중앙신협 (인)<br>
+            담당자: 김담당
+          </div>
+          <br><br>
+          <div style="text-align: center; font-weight: 700;">서울중앙지방법원 귀중</div>
+        </div>
+      </div>
+
+      <div class="side-actions">
+        <button class="side-btn primary" onclick="showScreen('doc-complete')">최종 완료 →</button>
+        <button class="side-btn" onclick="showScreen('doc-form')">수정</button>
+        <button class="side-btn">📥 PDF 다운로드</button>
+        <button class="side-btn">🖨 인쇄</button>
+        <button class="side-btn" onclick="alert('집변 변호사 검토 요청 전송 완료')">⚖️ 변호사 검토 요청</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ========== SCREEN: DOC COMPLETE ========== -->
+<section id="screen-doc-complete" class="screen">
+  <div class="container">
+    <div class="complete-card">
+      <div class="complete-check">✓</div>
+      <h2>서류 생성 완료</h2>
+      <p>지급명령 신청서가 생성되었습니다.<br>필요 시 변호사 검토 후 제출해 주세요.</p>
+
+      <div style="text-align: left; margin-bottom: 24px;">
+        <div style="padding: 14px 18px; background: var(--navy-50); border-radius: 10px; margin-bottom: 8px; display: flex; justify-content: space-between;">
+          <span style="font-weight: 600;">지급명령 신청서</span>
+          <span style="color: var(--blue-600); font-size: 12px; font-weight: 600;">AI 자동생성</span>
+        </div>
+        <div style="padding: 14px 18px; background: var(--navy-50); border-radius: 10px; display: flex; justify-content: space-between;">
+          <span style="font-weight: 600;">채권계산서</span>
+          <span style="color: var(--blue-600); font-size: 12px; font-weight: 600;">AI 자동생성</span>
+        </div>
+      </div>
+
+      <div style="display: flex; gap: 10px;">
+        <button class="action-btn" onclick="showScreen('doc-preview')" style="flex: 1;">미리보기</button>
+        <button class="action-btn" onclick="alert('집변 변호사 검토 요청 전송 완료')" style="flex: 1;">변호사 검토</button>
+        <button class="action-btn primary" onclick="showScreen('main')" style="flex: 1;">대시보드 →</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ========== SCREEN: CALCULATOR ========== -->
+<section id="screen-calculator" class="screen">
+  <div class="container">
+    <div class="back-bar">
+      <button class="back-btn" onclick="showScreen('main')">← 메인으로</button>
+      <span class="breadcrumb">채권계산기</span>
+    </div>
+
+    <div class="calc-layout">
+      <div class="calc-card">
+        <h3>입력</h3>
+        <div class="form-field" style="margin-bottom: 16px;">
+          <label>원금 (원)</label>
+          <input type="number" id="c_principal" value="100000000" oninput="calculateDebt()">
+        </div>
+        <div class="form-field" style="margin-bottom: 16px;">
+          <label>대출 실행일</label>
+          <input type="date" id="c_loandate" value="2025-01-15" oninput="calculateDebt()">
+        </div>
+        <div class="form-field" style="margin-bottom: 16px;">
+          <label>약정 이자율 (%)</label>
+          <input type="number" id="c_rate" value="4.5" step="0.1" oninput="calculateDebt()">
+        </div>
+        <div class="form-field" style="margin-bottom: 16px;">
+          <label>연체 시작일</label>
+          <input type="date" id="c_overdue" value="2026-01-15" oninput="calculateDebt()">
+        </div>
+        <div class="form-field" style="margin-bottom: 16px;">
+          <label>지연손해율 (%)</label>
+          <input type="number" id="c_delay" value="15" step="0.1" oninput="calculateDebt()">
+        </div>
+        <div class="form-field">
+          <label>계산 기준일</label>
+          <input type="date" id="c_target" value="2026-04-22" oninput="calculateDebt()">
+        </div>
+      </div>
+
+      <div class="calc-card">
+        <h3>계산 결과</h3>
+        <div class="calc-result-item">
+          <span class="calc-result-label">원금</span>
+          <span class="calc-result-value" id="r_principal">100,000,000원</span>
+        </div>
+        <div class="calc-result-item">
+          <span class="calc-result-label" id="r_interest_label">이자 (연 4.5%, 365일)</span>
+          <span class="calc-result-value" id="r_interest">4,500,000원</span>
+        </div>
+        <div class="calc-result-item">
+          <span class="calc-result-label" id="r_delay_label">지연손해금 (연 15%, 97일)</span>
+          <span class="calc-result-value" id="r_delay">3,986,301원</span>
+        </div>
+
+        <div class="calc-total">
+          <span class="calc-total-label">합계</span>
+          <span class="calc-total-value" id="r_total">108,486,301원</span>
+        </div>
+
+        <div class="calc-legal">
+          <strong>법률 근거</strong><br>
+          • <strong>소송촉진법 제3조①</strong> (연 12%) 적용 시: 별도 산출<br>
+          • <strong>민법 제379조</strong> (연 5%): 약정 이율 없을 때 적용
+        </div>
+
+        <div style="display: flex; gap: 8px; margin-top: 14px;">
+          <button class="action-btn" style="flex: 1;" onclick="showScreen('doc-form')">서류에 반영</button>
+          <button class="action-btn" style="flex: 1;">엑셀 내보내기</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ========== SCREEN: LAW SEARCH ========== -->
+<section id="screen-law-search" class="screen">
+  <div class="container">
+    <div class="back-bar">
+      <button class="back-btn" onclick="showScreen('main')">← 메인으로</button>
+      <span class="breadcrumb">법령 검색</span>
+    </div>
+
+    <div class="search-box" style="margin-bottom: 20px;">
+      <div class="search-label">법령 · 조항 · 판례를 일상 언어로 검색하세요</div>
+      <div class="search-input-wrap">
+        <input type="text" class="search-input" value="3개월 연체 시 기한의 이익 상실 요건" id="lawSearchInput">
+        <button class="search-btn">검색</button>
+      </div>
+    </div>
+
+    <div class="law-recent">
+      <h4>최근 지침 · 고시</h4>
+      <div class="law-recent-item">
+        <span>새마을금고 감독기준 일부개정</span>
+        <span class="law-recent-date">2026.02.09</span>
+      </div>
+      <div class="law-recent-item">
+        <span>상호저축은행업 감독규정 개정</span>
+        <span class="law-recent-date">2025.12.16</span>
+      </div>
+      <div class="law-recent-item">
+        <span>채권추심법 시행령 일부개정</span>
+        <span class="law-recent-date">2025.11.20</span>
+      </div>
+    </div>
+
+    <div class="section-label">검색 결과</div>
+
+    <div class="law-result-item">
+      <div class="law-result-title">민법 제388조 — 기한의 이익의 상실</div>
+      <div class="law-result-body">
+        채무자는 다음 각 호의 경우에는 기한의 이익을 주장하지 못한다:
+        1. 채무자가 담보를 손상·감소 또는 멸실하게 한 때
+        2. 채무자가 담보제공의 의무를 이행하지 아니한 때
+      </div>
+      <div class="law-result-source">출처: 민법 제388조 (법제처)</div>
+    </div>
+
+    <div class="law-result-item">
+      <div class="law-result-title">상호저축은행업 감독규정 제29조 — 여신건전성 분류</div>
+      <div class="law-result-body">
+        1개월 이상 3개월 미만 연체: "요주의" 분류 / 3개월 이상 연체: "고정" 이하 분류 /
+        기한이익 상실 사유 해당 시 채권 전액을 "고정" 이하로 분류
+      </div>
+      <div class="law-result-source">출처: 상호저축은행업 감독규정 제29조</div>
+    </div>
+
+    <div class="law-result-item">
+      <div class="law-result-title">민사소송법 제462조 — 지급명령 요건</div>
+      <div class="law-result-body">
+        금전 기타 대체물이나 유가증권의 일정한 수량의 지급을 구하는 경우 지급명령 신청 가능.
+        채무자가 국내에 주소를 두고 있어야 하며, 채무자의 소재가 불명인 경우에는 신청 불가합니다.
+      </div>
+      <div class="law-result-source">출처: 민사소송법 제462조 ~ 제471조</div>
+    </div>
+
+    <div class="ai-summary">
+      <h4>AI 요약</h4>
+      <p>3개월 연체 시 <strong style="color: #60a5fa;">대출약정서상 기한이익 상실 조항</strong>이 적용됩니다.
+      민법 제388조와 대출약정서의 기한이익 상실 특약에 따라 잔여 대출금 전액의 즉시 상환을 청구할 수 있습니다.
+      감독규정상 해당 채권은 "고정" 이하로 분류되며, 대손충당금 <strong style="color: #60a5fa;">20% 이상 적립</strong>이 필요합니다.</p>
+    </div>
+
+  </div>
+</section>
+
+<!-- ========== FOOTER ========== -->
+<footer class="footer">
+  <div class="container">
+    <strong>뱅크법률집사</strong> — 감사 사례집 기반 AI · 행원 전용 · 저축은행 · 신협 · 새마을금고 · 단위농협 대상<br>
+    © 2026 AI Consilium · 기술 기획서 v1 기반 프로토타입
+  </div>
+</footer>
+
+<script>
+function showScreen(name) {
+  document.querySelectorAll('.screen').forEach(s => s.classList.remove('active'));
+  document.getElementById('screen-' + name).classList.add('active');
+  window.scrollTo(0, 0);
+}
+
+function quickQuery(q) {
+  document.getElementById('mainSearchInput').value = q;
+  runSearch();
+}
+
+function runSearch() {
+  const q = document.getElementById('mainSearchInput').value.trim();
+  if (!q) return;
+  document.getElementById('resultQuery').textContent = `"${q}"`;
+  showScreen('search-result');
+}
+
+function fmt(n) {
+  return Math.round(n).toLocaleString('ko-KR') + '원';
+}
+function daysBetween(d1, d2) {
+  return Math.max(0, Math.round((new Date(d2) - new Date(d1)) / 86400000));
+}
+
+function calculateDebt() {
+  const p = parseFloat(document.getElementById('c_principal').value) || 0;
+  const loan = document.getElementById('c_loandate').value;
+  const rate = parseFloat(document.getElementById('c_rate').value) || 0;
+  const overdue = document.getElementById('c_overdue').value;
+  const delay = parseFloat(document.getElementById('c_delay').value) || 0;
+  const target = document.getElementById('c_target').value;
+
+  const interestDays = daysBetween(loan, overdue);
+  const delayDays = daysBetween(overdue, target);
+  const interest = p * (rate / 100) * (interestDays / 365);
+  const delayAmt = p * (delay / 100) * (delayDays / 365);
+  const total = p + interest + delayAmt;
+
+  document.getElementById('r_principal').textContent = fmt(p);
+  document.getElementById('r_interest').textContent = fmt(interest);
+  document.getElementById('r_delay').textContent = fmt(delayAmt);
+  document.getElementById('r_total').textContent = fmt(total);
+  document.getElementById('r_interest_label').textContent = `이자 (연 ${rate}%, ${interestDays}일)`;
+  document.getElementById('r_delay_label').textContent = `지연손해금 (연 ${delay}%, ${delayDays}일)`;
+}
+
+// Update doc preview from form
+function updatePreview() {
+  const map = {
+    p_debtor: document.getElementById('f_debtor').value,
+    p_principal: parseInt(document.getElementById('f_principal').value).toLocaleString('ko-KR'),
+    p_loandate: document.getElementById('f_loandate').value.replace(/-/g, '.'),
+    p_overdue: document.getElementById('f_overdue').value.replace(/-/g, '.'),
+    p_rate: document.getElementById('f_rate').value,
+    p_delay: document.getElementById('f_delay').value,
+  };
+  Object.entries(map).forEach(([id, val]) => {
+    document.querySelectorAll('#' + id).forEach(el => el.textContent = val);
+  });
+  const principal = parseInt(document.getElementById('f_principal').value) || 0;
+  const total = principal.toLocaleString('ko-KR');
+  document.getElementById('p_total').textContent = total;
+  document.getElementById('p_total2').textContent = total;
+}
+
+// Hook preview update on doc-preview show
+const origShow = showScreen;
+showScreen = function(name) {
+  if (name === 'doc-preview') updatePreview();
+  if (name === 'calculator') calculateDebt();
+  origShow(name);
+};
+
+calculateDebt();
+
+// Allow deep linking via ?s=screen-name for screenshots/sharing
+const params = new URLSearchParams(location.search);
+const initScreen = params.get('s');
+if (initScreen) {
+  setTimeout(() => showScreen(initScreen), 50);
+}
+</script>
+</body>
+</html>

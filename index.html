@@ -119,51 +119,69 @@ input, textarea { font-family: inherit; }
 #app.active { display: flex; }
 
 .sidebar {
-  width: 240px; background: #000; color: #fff;
+  width: 260px; background: #000; color: #fff;
   display: flex; flex-direction: column; flex-shrink: 0;
-  padding: 28px 0; position: sticky; top: 0; height: 100vh; overflow-y: auto;
+  padding: 24px 0 0; position: sticky; top: 0; height: 100vh; overflow-y: auto;
 }
 .sidebar-logo {
-  padding: 0 24px 24px; border-bottom: 1px solid rgba(255,255,255,0.1);
-  margin-bottom: 12px;
+  padding: 0 22px 20px; border-bottom: 1px solid rgba(255,255,255,0.12);
+  margin-bottom: 14px;
 }
-.sidebar-logo .name { font-size: 15px; font-weight: 700; letter-spacing: -0.02em; }
-.sidebar-logo .inst { font-size: 11px; color: rgba(255,255,255,0.4); margin-top: 3px; }
-
-.nav-section { padding: 16px 24px 8px; font-size: 10px; color: rgba(255,255,255,0.3); letter-spacing: 0.12em; }
-.nav-item {
-  display: flex; align-items: center; justify-content: space-between;
-  padding: 10px 24px; font-size: 13px; color: rgba(255,255,255,0.55);
-  cursor: pointer; transition: all .1s; border-left: 2px solid transparent;
-}
-.nav-item:hover { color: #fff; background: rgba(255,255,255,0.05); }
-.nav-item.active { color: #fff; background: rgba(255,255,255,0.08); border-left-color: #fff; }
-.nav-item .badge-mini {
-  font-size: 10px; padding: 1px 6px; background: rgba(255,255,255,0.12);
-  border-radius: 2px; color: rgba(255,255,255,0.8);
-}
+.sidebar-logo .name { font-size: 15px; font-weight: 700; letter-spacing: -0.02em; color: #fff; }
+.sidebar-logo .inst { font-size: 11px; color: rgba(255,255,255,0.5); margin-top: 4px; }
 
 .sidebar-new {
-  margin: 0 16px 8px; padding: 10px 14px;
-  border: 1px solid rgba(255,255,255,0.15); background: rgba(255,255,255,0.04);
-  font-size: 12px; color: #fff; cursor: pointer; transition: all .12s;
+  margin: 0 16px 14px; padding: 11px 14px;
+  border: 1px solid rgba(255,255,255,0.25); background: rgba(255,255,255,0.05);
+  font-size: 13px; font-weight: 600; color: #fff; cursor: pointer; transition: all .12s;
   display: flex; align-items: center; justify-content: space-between;
 }
-.sidebar-new:hover { background: rgba(255,255,255,0.1); border-color: rgba(255,255,255,0.3); }
-.sidebar-new .plus { font-size: 14px; font-weight: 300; opacity: 0.8; }
+.sidebar-new:hover { background: #fff; color: #000; border-color: #fff; }
+.sidebar-new .plus { font-size: 15px; font-weight: 300; }
+
+.nav-section {
+  padding: 14px 22px 6px;
+  font-size: 10px; font-weight: 700; color: rgba(255,255,255,0.4);
+  letter-spacing: 0.15em;
+}
+
+.nav-item {
+  padding: 11px 22px 11px 20px; cursor: pointer;
+  transition: all .12s; border-left: 2px solid transparent;
+  display: block;
+}
+.nav-item:hover { background: rgba(255,255,255,0.06); }
+.nav-item.active { background: rgba(255,255,255,0.1); border-left-color: #fff; }
+
+.nav-item .ni-title {
+  font-size: 13.5px; font-weight: 600; color: rgba(255,255,255,0.88);
+  letter-spacing: -0.01em; display: block;
+}
+.nav-item .ni-desc {
+  font-size: 11px; color: rgba(255,255,255,0.42);
+  margin-top: 2px; line-height: 1.4;
+  display: block;
+}
+.nav-item:hover .ni-title { color: #fff; }
+.nav-item:hover .ni-desc { color: rgba(255,255,255,0.6); }
+.nav-item.active .ni-title { color: #fff; }
+.nav-item.active .ni-desc { color: rgba(255,255,255,0.7); }
+
+.nav-divider { height: 1px; background: rgba(255,255,255,0.08); margin: 14px 20px 4px; }
 
 .side-hist {
-  flex: 1; overflow-y: auto; padding: 4px 0 16px;
+  padding: 2px 0 12px; max-height: 180px; overflow-y: auto;
 }
 .side-hist-item {
-  padding: 9px 24px; font-size: 12px; color: rgba(255,255,255,0.5);
+  padding: 7px 22px; font-size: 12px; color: rgba(255,255,255,0.5);
   cursor: pointer; transition: all .1s; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
 }
-.side-hist-item:hover { color: #fff; background: rgba(255,255,255,0.04); }
+.side-hist-item:hover { color: #fff; background: rgba(255,255,255,0.05); }
 
 .sidebar-footer {
-  padding: 16px 24px 0; border-top: 1px solid rgba(255,255,255,0.1);
-  font-size: 11px; color: rgba(255,255,255,0.3); line-height: 1.8;
+  margin-top: auto;
+  padding: 14px 22px 18px; border-top: 1px solid rgba(255,255,255,0.12);
+  font-size: 10.5px; color: rgba(255,255,255,0.38); line-height: 1.7;
 }
 
 .main-area { flex: 1; background: #fff; overflow-y: auto; position: relative; }
@@ -522,33 +540,51 @@ input, textarea { font-family: inherit; }
     </div>
 
     <div class="sidebar-new" onclick="newChat()">
-      <span>새 대화</span>
+      <span>새 대화 시작</span>
       <span class="plus">+</span>
     </div>
 
-    <div class="nav-section">업무</div>
-    <div class="nav-item active" onclick="navTo('chat',this)"><span>AI 상담</span></div>
-    <div class="nav-item" onclick="navTo('doc-form',this)"><span>서류 자동 생성</span></div>
-    <div class="nav-item" onclick="navTo('calc',this)"><span>채권계산기</span></div>
+    <div class="nav-section">핵심 기능</div>
 
-    <div class="nav-section">참고</div>
-    <div class="nav-item" onclick="navTo('law',this)"><span>법령 · 규정 색인</span></div>
-    <div class="nav-item" onclick="alert('집변 변호사 상담 요청이 전송되었습니다.')"><span>집변 변호사 연결</span></div>
+    <div class="nav-item active" onclick="navTo('chat',this)">
+      <span class="ni-title">AI 법률 상담</span>
+      <span class="ni-desc">법령·판례 기반 즉문즉답</span>
+    </div>
+
+    <div class="nav-item" onclick="navTo('doc-form',this)">
+      <span class="ni-title">서류 자동 생성</span>
+      <span class="ni-desc">지급명령·채권계산서 PDF</span>
+    </div>
+
+    <div class="nav-item" onclick="navTo('calc',this)">
+      <span class="ni-title">채권계산기</span>
+      <span class="ni-desc">원금·이자·지연손해금 산정</span>
+    </div>
+
+    <div class="nav-item" onclick="navTo('law',this)">
+      <span class="ni-title">법령 · 규정 색인</span>
+      <span class="ni-desc">6대 데이터 소스 현황</span>
+    </div>
+
+    <div class="nav-divider"></div>
+
+    <div class="nav-item" onclick="alert('집변 변호사 상담 요청이 전송되었습니다.')">
+      <span class="ni-title">집변 변호사 연결</span>
+      <span class="ni-desc">전담 변호사 1:1 검토</span>
+    </div>
 
     <div class="nav-section">최근 대화</div>
     <div class="side-hist">
       <div class="side-hist-item" onclick="loadPrompt('연체 3개월, 담보 부동산 있음, 다음 절차는?')">연체 3개월 담보 부동산 절차</div>
       <div class="side-hist-item" onclick="loadPrompt('무담보 대출 연체 60일, 지급명령 가능한지?')">무담보 60일 지급명령 가능 여부</div>
       <div class="side-hist-item" onclick="loadPrompt('기한의 이익 상실 요건')">기한이익 상실 요건</div>
-      <div class="side-hist-item" onclick="loadPrompt('BIS비율 기준')">BIS 비율 기준</div>
       <div class="side-hist-item" onclick="loadPrompt('채권추심법 야간추심 규제')">채권추심법 야간추심 규제</div>
       <div class="side-hist-item" onclick="loadPrompt('근저당권자 임의경매 신청 요건')">근저당권자 임의경매 요건</div>
-      <div class="side-hist-item" onclick="loadPrompt('내용증명 작성 방법')">내용증명 작성 방법</div>
     </div>
 
     <div class="sidebar-footer">
       행원 전용 · v2<br>
-      저축은행 · 신협 · 새마을금고<br>
+      저축은행 · 신협 · 새마을금고 · 단위농협<br>
       © 2026 AI Consilium
     </div>
   </nav>

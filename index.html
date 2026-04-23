@@ -16,9 +16,13 @@ body {
   background: #fff;
   -webkit-font-smoothing: antialiased;
 }
-::-webkit-scrollbar { width: 3px; }
-::-webkit-scrollbar-track { background: #fff; }
-::-webkit-scrollbar-thumb { background: #ddd; }
+::-webkit-scrollbar { width: 4px; height: 4px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb { background: #ddd; border-radius: 2px; }
+::-webkit-scrollbar-thumb:hover { background: #999; }
+
+button { font-family: inherit; }
+input, textarea { font-family: inherit; }
 
 /* ── Utilities ── */
 .hidden { display: none !important; }
@@ -27,16 +31,16 @@ body {
 .btn {
   display: inline-flex; align-items: center; justify-content: center; gap: 6px;
   height: 38px; padding: 0 18px;
-  font-family: inherit; font-size: 13px; font-weight: 500;
+  font-size: 13px; font-weight: 500;
   letter-spacing: -0.01em; white-space: nowrap;
   cursor: pointer; outline: none; border-radius: 2px;
-  transition: all .12s;
+  transition: all .12s; border: 1px solid transparent;
 }
-.btn-primary { background: #000; color: #fff; border: 1px solid #000; }
+.btn-primary { background: #000; color: #fff; border-color: #000; }
 .btn-primary:hover { background: #222; }
-.btn-outline { background: transparent; color: #000; border: 1px solid #000; }
+.btn-outline { background: transparent; color: #000; border-color: #000; }
 .btn-outline:hover { background: #f5f5f5; }
-.btn-ghost { background: transparent; color: #666; border: 1px solid #e5e5e5; }
+.btn-ghost { background: transparent; color: #666; border-color: #e5e5e5; }
 .btn-ghost:hover { border-color: #000; color: #000; }
 .btn-sm { height: 30px; padding: 0 12px; font-size: 12px; }
 .btn-lg { height: 48px; padding: 0 28px; font-size: 15px; font-weight: 600; }
@@ -47,30 +51,18 @@ body {
   width: 100%;
   background: transparent; color: #000;
   border: none; border-bottom: 1px solid #000; border-radius: 0;
-  padding: 10px 0; font-family: inherit; font-size: 14px;
+  padding: 10px 0; font-size: 14px;
   outline: none; transition: border-color .12s;
 }
-.input:focus { border-bottom-color: #000; }
-.input::placeholder { color: #bbb; }
-
 .input-box {
   width: 100%;
   background: #fff; color: #000;
   border: 1px solid #e5e5e5; border-radius: 2px;
-  padding: 10px 14px; font-family: inherit; font-size: 14px;
+  padding: 10px 14px; font-size: 14px;
   outline: none; transition: border-color .12s;
 }
 .input-box:focus { border-color: #000; }
 .input-box::placeholder { color: #bbb; }
-
-.search-wrap {
-  display: flex; align-items: stretch; border: 1px solid #000;
-}
-.search-wrap .input {
-  border: none; border-bottom: none; padding: 12px 16px; flex: 1;
-  font-size: 15px;
-}
-.search-wrap .btn { border-radius: 0; border: none; border-left: 1px solid #000; height: auto; padding: 0 22px; }
 
 /* ── Section labels ── */
 .sec-label {
@@ -80,42 +72,7 @@ body {
 }
 .sec-label span { color: #000; font-weight: 600; }
 
-/* ── Dividers ── */
 .divider { border: none; border-top: 1px solid #e5e5e5; margin: 24px 0; }
-
-/* ── Cards / Blocks ── */
-.block-card {
-  border: 1px solid #e5e5e5; padding: 20px 22px;
-  margin-bottom: 12px; position: relative;
-}
-.block-card:hover { border-color: #000; }
-.block-card.active { border-color: #000; border-left: 3px solid #000; }
-
-.row-item {
-  display: flex; align-items: center; justify-content: space-between;
-  padding: 13px 0; border-bottom: 1px solid #e5e5e5;
-  font-size: 13px; cursor: pointer; transition: color .1s;
-}
-.row-item:last-child { border-bottom: none; }
-.row-item:hover { color: #000; }
-.row-item .meta { font-size: 11px; color: #999; font-variant-numeric: tabular-nums; }
-
-/* ── Tag pills ── */
-.tag {
-  display: inline-block; font-size: 10px; font-weight: 600;
-  padding: 2px 7px; border-radius: 2px; letter-spacing: 0.03em;
-}
-.tag-black { background: #000; color: #fff; }
-.tag-outline { border: 1px solid #000; color: #000; }
-.tag-gray { background: #f0f0f0; color: #666; }
-.tag-red { background: #000; color: #fff; }
-
-/* ── Confidence ── */
-.conf {
-  font-size: 11px; font-weight: 600; color: #000;
-  display: flex; align-items: center; gap: 4px;
-}
-.conf::before { content: '●'; font-size: 7px; }
 
 /* ══════════════════════════════
    LOGIN PAGE
@@ -128,7 +85,6 @@ body {
   display: flex; flex-direction: column; justify-content: space-between;
 }
 .login-logo { font-size: 16px; font-weight: 600; letter-spacing: -0.02em; }
-.login-hero { }
 .login-hero h1 {
   font-size: 52px; font-weight: 800; line-height: 1.1;
   letter-spacing: -0.03em; margin-bottom: 20px;
@@ -148,7 +104,7 @@ body {
 .seg-btns { display: flex; gap: 0; }
 .seg-btn {
   flex: 1; height: 38px; border: 1px solid #e5e5e5; background: #fff;
-  font-family: inherit; font-size: 13px; font-weight: 500; cursor: pointer;
+  font-size: 13px; font-weight: 500; cursor: pointer;
   transition: all .12s; color: #666;
   border-right-width: 0;
 }
@@ -157,77 +113,281 @@ body {
 .seg-btn:hover:not(.active) { background: #f5f5f5; color: #000; }
 
 /* ══════════════════════════════
-   APP LAYOUT (sidebar + main)
+   APP LAYOUT
 ══════════════════════════════ */
 #app { display: none; min-height: 100vh; flex-direction: row; }
 #app.active { display: flex; }
 
 .sidebar {
-  width: 220px; min-height: 100vh; background: #000; color: #fff;
+  width: 240px; background: #000; color: #fff;
   display: flex; flex-direction: column; flex-shrink: 0;
   padding: 28px 0; position: sticky; top: 0; height: 100vh; overflow-y: auto;
 }
 .sidebar-logo {
-  padding: 0 24px 28px; border-bottom: 1px solid rgba(255,255,255,0.1);
-  margin-bottom: 8px;
+  padding: 0 24px 24px; border-bottom: 1px solid rgba(255,255,255,0.1);
+  margin-bottom: 12px;
 }
 .sidebar-logo .name { font-size: 15px; font-weight: 700; letter-spacing: -0.02em; }
 .sidebar-logo .inst { font-size: 11px; color: rgba(255,255,255,0.4); margin-top: 3px; }
 
-.nav-section { padding: 16px 24px 8px; font-size: 10px; color: rgba(255,255,255,0.3); letter-spacing: 0.1em; }
+.nav-section { padding: 16px 24px 8px; font-size: 10px; color: rgba(255,255,255,0.3); letter-spacing: 0.12em; }
 .nav-item {
-  display: flex; align-items: center; gap: 10px;
+  display: flex; align-items: center; justify-content: space-between;
   padding: 10px 24px; font-size: 13px; color: rgba(255,255,255,0.55);
   cursor: pointer; transition: all .1s; border-left: 2px solid transparent;
 }
 .nav-item:hover { color: #fff; background: rgba(255,255,255,0.05); }
 .nav-item.active { color: #fff; background: rgba(255,255,255,0.08); border-left-color: #fff; }
-.nav-item .icon { font-size: 15px; opacity: 0.7; }
-.nav-item.active .icon { opacity: 1; }
+.nav-item .badge-mini {
+  font-size: 10px; padding: 1px 6px; background: rgba(255,255,255,0.12);
+  border-radius: 2px; color: rgba(255,255,255,0.8);
+}
+
+.sidebar-new {
+  margin: 0 16px 8px; padding: 10px 14px;
+  border: 1px solid rgba(255,255,255,0.15); background: rgba(255,255,255,0.04);
+  font-size: 12px; color: #fff; cursor: pointer; transition: all .12s;
+  display: flex; align-items: center; justify-content: space-between;
+}
+.sidebar-new:hover { background: rgba(255,255,255,0.1); border-color: rgba(255,255,255,0.3); }
+.sidebar-new .plus { font-size: 14px; font-weight: 300; opacity: 0.8; }
+
+.side-hist {
+  flex: 1; overflow-y: auto; padding: 4px 0 16px;
+}
+.side-hist-item {
+  padding: 9px 24px; font-size: 12px; color: rgba(255,255,255,0.5);
+  cursor: pointer; transition: all .1s; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+}
+.side-hist-item:hover { color: #fff; background: rgba(255,255,255,0.04); }
 
 .sidebar-footer {
-  margin-top: auto; padding: 20px 24px 0; border-top: 1px solid rgba(255,255,255,0.1);
+  padding: 16px 24px 0; border-top: 1px solid rgba(255,255,255,0.1);
   font-size: 11px; color: rgba(255,255,255,0.3); line-height: 1.8;
 }
 
-.main-area { flex: 1; background: #fff; overflow-y: auto; }
+.main-area { flex: 1; background: #fff; overflow-y: auto; position: relative; }
 
 .topbar {
   border-bottom: 1px solid #e5e5e5; padding: 0 40px;
-  height: 52px; display: flex; align-items: center; justify-content: space-between;
+  height: 54px; display: flex; align-items: center; justify-content: space-between;
   background: #fff; position: sticky; top: 0; z-index: 10;
 }
 .topbar-title { font-size: 13px; font-weight: 600; color: #000; }
 .topbar-meta { font-size: 12px; color: #999; display: flex; align-items: center; gap: 12px; }
+.inst-badge { background: #000; color: #fff; padding: 3px 10px; font-size: 11px; font-weight: 600; }
 
-.content { padding: 40px; max-width: 900px; }
-
-/* ══════════════════════════════
-   SCREENS
-══════════════════════════════ */
 .screen { display: none; }
 .screen.active { display: block; }
 
-/* ── Dashboard ── */
-.kpi-grid { display: grid; grid-template-columns: repeat(4,1fr); gap: 0; border: 1px solid #e5e5e5; margin-bottom: 40px; }
-.kpi-item { padding: 20px 22px; border-right: 1px solid #e5e5e5; }
-.kpi-item:last-child { border-right: none; }
-.kpi-val { font-size: 28px; font-weight: 800; letter-spacing: -0.03em; line-height: 1; margin-bottom: 6px; }
-.kpi-label { font-size: 11px; color: #999; }
+/* ══════════════════════════════
+   CHAT (MAIN)
+══════════════════════════════ */
+#sc-chat { display: none; flex-direction: column; height: calc(100vh - 54px); }
+#sc-chat.active { display: flex; }
 
-.two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 32px; }
-
-/* ── Search / Results ── */
-.answer-num {
-  display: inline-flex; align-items: center; justify-content: center;
-  width: 20px; height: 20px; border: 1px solid #000; border-radius: 50%;
-  font-size: 10px; font-weight: 700; margin-right: 8px; flex-shrink: 0;
+.chat-stream {
+  flex: 1; overflow-y: auto;
+  padding: 0 40px;
 }
-.answer-title { font-size: 14px; font-weight: 700; margin-bottom: 8px; display: flex; align-items: flex-start; }
-.answer-body { font-size: 13px; color: #444; line-height: 1.7; padding-left: 28px; margin-bottom: 12px; }
-.answer-cite { font-size: 11px; color: #999; padding-left: 28px; display: flex; justify-content: space-between; }
+.chat-inner { max-width: 860px; margin: 0 auto; padding: 40px 0 32px; }
 
-/* ── Document preview ── */
+/* Empty/welcome state */
+.chat-welcome { padding: 64px 0 40px; }
+.chat-welcome h1 {
+  font-size: 34px; font-weight: 800; letter-spacing: -0.03em; line-height: 1.2;
+  margin-bottom: 14px;
+}
+.chat-welcome p {
+  font-size: 14px; color: #666; line-height: 1.7; margin-bottom: 40px;
+  max-width: 560px;
+}
+.chat-welcome .sub-label {
+  font-size: 11px; font-weight: 600; color: #999; letter-spacing: 0.08em;
+  margin-bottom: 14px;
+}
+
+/* Source panel — visible in welcome */
+.source-grid {
+  display: grid; grid-template-columns: repeat(3, 1fr); gap: 0;
+  border: 1px solid #e5e5e5; margin-bottom: 40px;
+}
+.source-cell {
+  padding: 16px 18px; border-right: 1px solid #e5e5e5; border-bottom: 1px solid #e5e5e5;
+}
+.source-cell:nth-child(3n) { border-right: none; }
+.source-cell:nth-last-child(-n+3) { border-bottom: none; }
+.source-cell .src-num {
+  font-size: 10px; font-weight: 700; color: #999; letter-spacing: 0.06em; margin-bottom: 6px;
+}
+.source-cell .src-name {
+  font-size: 13px; font-weight: 700; color: #000; margin-bottom: 2px;
+}
+.source-cell .src-desc {
+  font-size: 11px; color: #888; line-height: 1.55;
+}
+
+.prompt-grid {
+  display: grid; grid-template-columns: 1fr 1fr; gap: 10px;
+  margin-bottom: 24px;
+}
+.prompt-card {
+  padding: 14px 16px; border: 1px solid #e5e5e5; cursor: pointer;
+  transition: all .12s; background: #fff;
+}
+.prompt-card:hover { border-color: #000; background: #fafafa; }
+.prompt-card .pc-tag {
+  font-size: 10px; font-weight: 600; letter-spacing: 0.05em; color: #999;
+  text-transform: uppercase; margin-bottom: 6px;
+}
+.prompt-card .pc-q {
+  font-size: 13px; font-weight: 500; color: #000; line-height: 1.5;
+}
+
+/* Messages */
+.msg-row { padding: 20px 0; display: flex; gap: 16px; }
+.msg-avatar {
+  width: 28px; height: 28px; flex-shrink: 0;
+  border: 1px solid #000; background: #fff; color: #000;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 11px; font-weight: 700; letter-spacing: -0.02em;
+}
+.msg-row.user .msg-avatar { background: #000; color: #fff; }
+.msg-body { flex: 1; padding-top: 3px; min-width: 0; }
+.msg-role { font-size: 11px; color: #999; margin-bottom: 8px; letter-spacing: 0.05em; font-weight: 600; }
+.msg-text { font-size: 14px; line-height: 1.75; color: #000; }
+.msg-text p { margin-bottom: 10px; }
+.msg-text strong { font-weight: 700; }
+.msg-text ol, .msg-text ul { margin: 10px 0 12px 20px; }
+.msg-text li { margin-bottom: 4px; }
+
+/* AI retrieval trace */
+.trace-box {
+  border: 1px solid #e5e5e5; margin: 8px 0 18px;
+}
+.trace-head {
+  padding: 10px 14px; font-size: 11px; font-weight: 600; color: #666;
+  letter-spacing: 0.05em; text-transform: uppercase;
+  background: #fafafa; border-bottom: 1px solid #e5e5e5;
+  display: flex; justify-content: space-between; align-items: center;
+}
+.trace-head .trace-toggle { cursor: pointer; color: #000; font-weight: 700; }
+.trace-list { padding: 6px 14px 10px; }
+.trace-step {
+  display: flex; align-items: center; gap: 10px;
+  padding: 6px 0; font-size: 12px; color: #555;
+}
+.trace-step .step-dot {
+  width: 14px; height: 14px; border: 1px solid #ccc; border-radius: 50%;
+  flex-shrink: 0; background: #fff; position: relative;
+}
+.trace-step.done .step-dot { background: #000; border-color: #000; }
+.trace-step.done .step-dot::after {
+  content: ''; position: absolute; top: 3px; left: 6px;
+  width: 3px; height: 6px; border: solid #fff; border-width: 0 1.5px 1.5px 0;
+  transform: rotate(45deg);
+}
+.trace-step.running .step-dot {
+  border-color: #000;
+  animation: pulse 1.2s infinite;
+}
+@keyframes pulse {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(0,0,0,0.3); }
+  50% { box-shadow: 0 0 0 4px rgba(0,0,0,0); }
+}
+.trace-step .step-label { flex: 1; }
+.trace-step .step-meta { font-size: 11px; color: #999; font-variant-numeric: tabular-nums; }
+.trace-step.done .step-label { color: #000; font-weight: 500; }
+
+/* Source chips after answer */
+.src-chips { display: flex; flex-wrap: wrap; gap: 6px; margin: 14px 0 10px; }
+.src-chip {
+  font-size: 11px; padding: 4px 10px; border: 1px solid #e5e5e5;
+  color: #666; cursor: pointer; transition: all .1s;
+  display: inline-flex; align-items: center; gap: 6px;
+}
+.src-chip:hover { border-color: #000; color: #000; }
+.src-chip .sc-num {
+  font-weight: 700; color: #000; font-size: 10px;
+  padding: 1px 5px; background: #f0f0f0; border-radius: 2px;
+}
+.src-chip.active { border-color: #000; color: #000; background: #fafafa; }
+
+/* Citation cards */
+.cite-list { margin-top: 10px; }
+.cite-card {
+  border: 1px solid #e5e5e5; padding: 14px 18px; margin-bottom: 8px;
+  transition: border-color .12s;
+}
+.cite-card:hover { border-color: #bbb; }
+.cite-head {
+  display: flex; align-items: center; justify-content: space-between;
+  margin-bottom: 8px; gap: 10px;
+}
+.cite-num {
+  display: inline-flex; align-items: center; justify-content: center;
+  min-width: 22px; height: 22px; padding: 0 6px;
+  border: 1px solid #000; background: #000; color: #fff;
+  font-size: 11px; font-weight: 700; font-variant-numeric: tabular-nums;
+}
+.cite-title { flex: 1; font-size: 13px; font-weight: 700; color: #000; }
+.cite-kind {
+  font-size: 10px; font-weight: 600; letter-spacing: 0.05em;
+  color: #666; padding: 2px 7px; border: 1px solid #e5e5e5;
+}
+.cite-body { font-size: 12.5px; color: #444; line-height: 1.7; padding-left: 32px; }
+.cite-meta {
+  padding-left: 32px; margin-top: 8px; font-size: 11px; color: #999;
+  display: flex; justify-content: space-between; gap: 10px;
+}
+.conf {
+  font-size: 11px; font-weight: 600; color: #000;
+  display: flex; align-items: center; gap: 4px;
+}
+.conf::before { content: ''; display: inline-block; width: 6px; height: 6px; background: #000; border-radius: 50%; }
+
+/* Action row after answer */
+.msg-actions {
+  display: flex; flex-wrap: wrap; gap: 8px;
+  padding-top: 16px; margin-top: 14px; border-top: 1px solid #e5e5e5;
+}
+
+/* Composer */
+.composer-wrap {
+  border-top: 1px solid #e5e5e5; padding: 16px 40px 24px; background: #fff;
+}
+.composer-inner { max-width: 860px; margin: 0 auto; }
+.composer-box {
+  border: 1px solid #000; padding: 4px; display: flex; align-items: flex-end; gap: 0;
+  background: #fff; transition: border-color .12s;
+}
+.composer-box:focus-within { border-color: #000; box-shadow: 0 0 0 2px rgba(0,0,0,0.06); }
+.composer-textarea {
+  flex: 1; border: none; outline: none; resize: none;
+  padding: 12px 14px; font-size: 14px; line-height: 1.55; color: #000;
+  background: transparent; min-height: 28px; max-height: 180px;
+}
+.composer-textarea::placeholder { color: #bbb; }
+.composer-send {
+  height: 40px; padding: 0 20px; border: none; background: #000; color: #fff;
+  font-size: 13px; font-weight: 600; cursor: pointer; transition: all .12s;
+  margin: 4px 4px 4px 0;
+}
+.composer-send:hover { background: #222; }
+.composer-send:disabled { background: #ccc; cursor: not-allowed; }
+
+.composer-meta {
+  display: flex; justify-content: space-between; align-items: center;
+  padding: 10px 2px 0; font-size: 11px; color: #999;
+}
+.composer-meta .srcs { display: flex; gap: 10px; flex-wrap: wrap; }
+.composer-meta .srcs span::before { content: ''; display: inline-block; width: 4px; height: 4px; background: #999; border-radius: 50%; margin-right: 6px; vertical-align: middle; }
+
+/* ══════════════════════════════
+   OTHER SCREENS (unchanged content, reused styles)
+══════════════════════════════ */
+.content-inner { padding: 40px; max-width: 960px; }
+
 .doc-paper {
   border: 1px solid #e5e5e5; padding: 56px 64px;
   font-family: 'Nanum Myeongjo', 'Batang', Georgia, serif; font-size: 14px; line-height: 2;
@@ -248,7 +408,6 @@ body {
 }
 .doc-paper .doc-footer { margin-top: 48px; line-height: 2.4; }
 
-/* ── Calculator ── */
 .calc-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 0; border: 1px solid #e5e5e5; }
 .calc-inputs { padding: 28px 32px; border-right: 1px solid #e5e5e5; }
 .calc-results { padding: 28px 32px; }
@@ -266,33 +425,6 @@ body {
 .calc-total-box .val { font-size: 22px; font-weight: 800; letter-spacing: -0.02em; font-variant-numeric: tabular-nums; }
 .calc-legal { margin-top: 16px; padding: 14px; background: #f9f9f9; font-size: 12px; color: #666; line-height: 1.8; }
 
-/* ── Law search ── */
-.law-result { padding: 18px 0; border-bottom: 1px solid #e5e5e5; }
-.law-result:last-child { border-bottom: none; }
-.law-result-title { font-size: 14px; font-weight: 700; margin-bottom: 6px; }
-.law-result-body { font-size: 13px; color: #555; line-height: 1.7; margin-bottom: 8px; }
-.law-result-src { font-size: 11px; color: #bbb; }
-.ai-box { background: #000; color: #fff; padding: 22px 24px; margin-top: 20px; }
-.ai-box .ai-label { font-size: 10px; letter-spacing: 0.1em; opacity: 0.5; margin-bottom: 8px; }
-.ai-box p { font-size: 13px; line-height: 1.75; }
-.ai-box strong { color: #fff; }
-
-/* ── Complete ── */
-.complete-wrap { max-width: 480px; margin: 80px auto; text-align: center; }
-.complete-wrap .check { font-size: 40px; margin-bottom: 20px; }
-.complete-wrap h2 { font-size: 24px; font-weight: 700; margin-bottom: 10px; }
-.complete-wrap p { font-size: 14px; color: #999; margin-bottom: 32px; line-height: 1.7; }
-.gen-item {
-  display: flex; justify-content: space-between; align-items: center;
-  padding: 14px 16px; border: 1px solid #e5e5e5; margin-bottom: 8px; text-align: left;
-}
-.gen-item .name { font-size: 13px; font-weight: 600; }
-.gen-item .badge { font-size: 11px; color: #999; }
-
-/* ── Action bar ── */
-.action-row { display: flex; gap: 8px; padding-top: 24px; border-top: 1px solid #e5e5e5; margin-top: 24px; flex-wrap: wrap; }
-
-/* field */
 .form-field { margin-bottom: 24px; }
 .form-field label { display: block; font-size: 12px; color: #999; margin-bottom: 8px; letter-spacing: 0.03em; }
 .form-field label .req { color: #000; }
@@ -300,27 +432,37 @@ body {
 
 .notice-bar {
   border: 1px solid #e5e5e5; padding: 12px 16px; margin-bottom: 24px;
-  font-size: 12px; color: #666; display: flex; gap: 10px; align-items: flex-start;
-  background: #fafafa;
+  font-size: 12px; color: #666; background: #fafafa;
 }
-.notice-bar .ico { font-size: 13px; flex-shrink: 0; margin-top: 1px; }
+.notice-bar strong { color: #000; }
 
-/* quick chips */
-.chips { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 14px; }
-.chip {
-  border: 1px solid #e5e5e5; padding: 6px 12px; font-size: 12px; color: #666;
-  cursor: pointer; transition: all .1s; background: #fff;
+.complete-wrap { max-width: 480px; margin: 80px auto; text-align: center; }
+.complete-wrap h2 { font-size: 24px; font-weight: 700; margin-bottom: 10px; }
+.complete-wrap p { font-size: 14px; color: #999; margin-bottom: 32px; line-height: 1.7; }
+.complete-mark {
+  width: 56px; height: 56px; border: 2px solid #000; margin: 0 auto 20px;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 28px; font-weight: 800;
 }
-.chip:hover { border-color: #000; color: #000; }
+.gen-item {
+  display: flex; justify-content: space-between; align-items: center;
+  padding: 14px 16px; border: 1px solid #e5e5e5; margin-bottom: 8px; text-align: left;
+}
+.gen-item .name { font-size: 13px; font-weight: 600; }
+.gen-item .badge { font-size: 11px; color: #999; }
+.action-row { display: flex; gap: 8px; padding-top: 24px; border-top: 1px solid #e5e5e5; margin-top: 24px; flex-wrap: wrap; }
 
-@media (max-width: 768px) {
+@media (max-width: 900px) {
   #pg-login { grid-template-columns: 1fr; }
   .login-left { display: none; }
   .sidebar { display: none; }
-  .kpi-grid { grid-template-columns: 1fr 1fr; }
   .form-grid { grid-template-columns: 1fr; }
   .calc-grid { grid-template-columns: 1fr; }
-  .two-col { grid-template-columns: 1fr; }
+  .source-grid { grid-template-columns: 1fr 1fr; }
+  .source-cell:nth-child(3n) { border-right: 1px solid #e5e5e5; }
+  .source-cell:nth-child(2n) { border-right: none; }
+  .prompt-grid { grid-template-columns: 1fr; }
+  .chat-stream, .composer-wrap { padding-left: 20px; padding-right: 20px; }
 }
 </style>
 </head>
@@ -363,7 +505,7 @@ body {
       <input class="input" id="inp-name" type="text" placeholder="예: 김담당">
     </div>
 
-    <button class="btn btn-primary btn-full btn-lg" style="margin-top:8px;" onclick="doLogin()">시작하기 →</button>
+    <button class="btn btn-primary btn-full btn-lg" style="margin-top:8px;" onclick="doLogin()">시작하기</button>
   </div>
 </div>
 
@@ -379,19 +521,34 @@ body {
       <div class="inst" id="sb-inst">신협 · 여신업무팀</div>
     </div>
 
+    <div class="sidebar-new" onclick="newChat()">
+      <span>새 대화</span>
+      <span class="plus">+</span>
+    </div>
+
     <div class="nav-section">업무</div>
-    <div class="nav-item active" onclick="navTo('dash',this)"><span class="icon">◈</span>대시보드</div>
-    <div class="nav-item" onclick="navTo('search',this)"><span class="icon">◎</span>즉문즉답 검색</div>
-    <div class="nav-item" onclick="navTo('doc-form',this)"><span class="icon">▣</span>서류 자동 생성</div>
-    <div class="nav-item" onclick="navTo('calc',this)"><span class="icon">≡</span>채권계산기</div>
+    <div class="nav-item active" onclick="navTo('chat',this)"><span>AI 상담</span></div>
+    <div class="nav-item" onclick="navTo('doc-form',this)"><span>서류 자동 생성</span></div>
+    <div class="nav-item" onclick="navTo('calc',this)"><span>채권계산기</span></div>
 
     <div class="nav-section">참고</div>
-    <div class="nav-item" onclick="navTo('law',this)"><span class="icon">◇</span>법령 검색</div>
-    <div class="nav-item" onclick="alert('집변 변호사 상담 연결 중…')"><span class="icon">◉</span>집변 법률상담</div>
+    <div class="nav-item" onclick="navTo('law',this)"><span>법령 · 규정 색인</span></div>
+    <div class="nav-item" onclick="alert('집변 변호사 상담 요청이 전송되었습니다.')"><span>집변 변호사 연결</span></div>
+
+    <div class="nav-section">최근 대화</div>
+    <div class="side-hist">
+      <div class="side-hist-item" onclick="loadPrompt('연체 3개월, 담보 부동산 있음, 다음 절차는?')">연체 3개월 담보 부동산 절차</div>
+      <div class="side-hist-item" onclick="loadPrompt('무담보 대출 연체 60일, 지급명령 가능한지?')">무담보 60일 지급명령 가능 여부</div>
+      <div class="side-hist-item" onclick="loadPrompt('기한의 이익 상실 요건')">기한이익 상실 요건</div>
+      <div class="side-hist-item" onclick="loadPrompt('BIS비율 기준')">BIS 비율 기준</div>
+      <div class="side-hist-item" onclick="loadPrompt('채권추심법 야간추심 규제')">채권추심법 야간추심 규제</div>
+      <div class="side-hist-item" onclick="loadPrompt('근저당권자 임의경매 신청 요건')">근저당권자 임의경매 요건</div>
+      <div class="side-hist-item" onclick="loadPrompt('내용증명 작성 방법')">내용증명 작성 방법</div>
+    </div>
 
     <div class="sidebar-footer">
-      행원 전용<br>
-      저축은행 · 신협 · 새마을금고 · 단위농협<br>
+      행원 전용 · v2<br>
+      저축은행 · 신협 · 새마을금고<br>
       © 2026 AI Consilium
     </div>
   </nav>
@@ -399,237 +556,115 @@ body {
   <!-- Main area -->
   <div class="main-area">
     <div class="topbar">
-      <div class="topbar-title" id="tb-title">대시보드</div>
+      <div class="topbar-title" id="tb-title">AI 상담</div>
       <div class="topbar-meta">
-        <span id="tb-inst-badge" style="background:#000;color:#fff;padding:3px 9px;font-size:11px;font-weight:600;">신협</span>
+        <span class="inst-badge" id="tb-inst-badge">신협</span>
         <span id="tb-user">서울중앙신협 · 김담당</span>
       </div>
     </div>
 
-    <!-- ── DASHBOARD ── -->
-    <div id="sc-dash" class="screen active">
-      <div class="content">
+    <!-- ══════════ CHAT ══════════ -->
+    <div id="sc-chat" class="screen active">
 
-        <div class="sec-label"><span>현황 /</span> 오늘 업무 요약</div>
-        <div class="kpi-grid">
-          <div class="kpi-item"><div class="kpi-val">3</div><div class="kpi-label">연체 채권 (건)</div></div>
-          <div class="kpi-item"><div class="kpi-val">1</div><div class="kpi-label">서류 생성 대기</div></div>
-          <div class="kpi-item"><div class="kpi-val">94</div><div class="kpi-label">최장 연체일수 (일)</div></div>
-          <div class="kpi-item"><div class="kpi-val">2</div><div class="kpi-label">법령 업데이트</div></div>
-        </div>
+      <div class="chat-stream" id="chat-stream">
+        <div class="chat-inner" id="chat-inner">
 
-        <!-- Search bar on dashboard -->
-        <div class="sec-label" style="margin-bottom:12px;"><span>즉문즉답 /</span> 궁금한 사항을 입력하세요</div>
-        <div class="search-wrap" style="margin-bottom:12px;">
-          <input class="input" id="dash-search" type="text"
-                 placeholder='예) "연체 3개월, 담보 부동산 있음" / "지급명령 요건" / "BIS비율 기준"'
-                 onkeydown="if(event.key==='Enter')runSearch()">
-          <button class="btn btn-primary" onclick="runSearch()">검색</button>
-        </div>
-        <div class="chips">
-          <div class="chip" onclick="setQ('연체 3개월, 담보 부동산 있음, 다음 절차는?')">연체 3개월 담보 부동산</div>
-          <div class="chip" onclick="setQ('무담보 대출 연체 60일, 지급명령 가능한지?')">무담보 연체 60일 지급명령</div>
-          <div class="chip" onclick="setQ('기한의 이익 상실 요건')">기한이익 상실 요건</div>
-          <div class="chip" onclick="setQ('BIS비율 기준')">BIS비율 기준</div>
-          <div class="chip" onclick="setQ('채권추심법 야간추심 규제')">야간추심 규제</div>
-        </div>
+          <!-- Welcome state -->
+          <div id="chat-welcome" class="chat-welcome">
+            <h1>무엇을 도와드릴까요</h1>
+            <p>여신·채권·리스크 관리 업무에 관한 질문을 자유롭게 입력하세요. 법령, 감독규정, 내부 사례집, 판례까지 한 번에 확인할 수 있습니다.</p>
 
-        <hr class="divider">
-
-        <div class="two-col">
-          <div>
-            <div class="sec-label"><span>최근 검색 /</span></div>
-            <div class="row-item" onclick="setQ('연체 90일 경매신청 절차');runSearch()">
-              <span>연체 90일 경매신청 절차</span><span class="meta">04.21</span>
+            <div class="sub-label">답변이 참조하는 6대 데이터 소스</div>
+            <div class="source-grid">
+              <div class="source-cell"><div class="src-num">01</div><div class="src-name">법령센터 OpenAPI</div><div class="src-desc">국가법령정보 · 법령·시행령·시행규칙 실시간 연동</div></div>
+              <div class="source-cell"><div class="src-num">02</div><div class="src-name">감독 · 지침 규정</div><div class="src-desc">금감원 · 예보 · 행안부 · 농축협 감독규정</div></div>
+              <div class="source-cell"><div class="src-num">03</div><div class="src-name">기관 내부 규정</div><div class="src-desc">업로드된 소속 기관 여신·리스크 규정 (RAG)</div></div>
+              <div class="source-cell"><div class="src-num">04</div><div class="src-name">내부 사례집</div><div class="src-desc">여신·채권 실무 처리 사례 · 감사 지적 사례</div></div>
+              <div class="source-cell"><div class="src-num">05</div><div class="src-name">유권해석</div><div class="src-desc">법제처 · 금감원 · 금융위 질의회신 및 유권해석</div></div>
+              <div class="source-cell"><div class="src-num">06</div><div class="src-name">판례</div><div class="src-desc">대법원 · 하급심 판결 · 결정례 검색</div></div>
             </div>
-            <div class="row-item" onclick="setQ('내용증명 양식');runSearch()">
-              <span>내용증명 양식</span><span class="meta">04.20</span>
-            </div>
-            <div class="row-item" onclick="setQ('가압류 신청 관할법원');runSearch()">
-              <span>가압류 신청 관할법원</span><span class="meta">04.19</span>
-            </div>
-            <div class="row-item" onclick="setQ('근저당권자 임의경매 신청 요건');runSearch()">
-              <span>근저당권자 임의경매 신청 요건</span><span class="meta">04.18</span>
+
+            <div class="sub-label">자주 묻는 질문</div>
+            <div class="prompt-grid">
+              <div class="prompt-card" onclick="sendPrompt('연체 3개월, 담보 부동산 있음, 다음 절차는?')">
+                <div class="pc-tag">여신관리</div>
+                <div class="pc-q">연체 3개월, 담보 부동산 있음 — 다음 절차는?</div>
+              </div>
+              <div class="prompt-card" onclick="sendPrompt('무담보 대출 연체 60일, 지급명령 신청 가능한가요?')">
+                <div class="pc-tag">회수절차</div>
+                <div class="pc-q">무담보 대출 연체 60일, 지급명령 신청 가능한가요?</div>
+              </div>
+              <div class="prompt-card" onclick="sendPrompt('기한의 이익 상실 요건과 적용 시점을 정리해줘')">
+                <div class="pc-tag">여신실무</div>
+                <div class="pc-q">기한의 이익 상실 요건과 적용 시점을 정리해줘</div>
+              </div>
+              <div class="prompt-card" onclick="sendPrompt('채권추심법상 야간추심 제한 시간과 위반 시 제재는?')">
+                <div class="pc-tag">컴플라이언스</div>
+                <div class="pc-q">채권추심법상 야간추심 제한 시간과 위반 시 제재는?</div>
+              </div>
             </div>
           </div>
-          <div>
-            <div class="sec-label"><span>알림 /</span> 법령 · 지침 업데이트</div>
-            <div class="row-item">
-              <span>새마을금고 감독기준 개정 (2026.2.9)</span>
-              <span class="tag tag-black">신규</span>
-            </div>
-            <div class="row-item">
-              <span>가압류 결정 인용 — 홍OO 건</span>
-              <span class="tag tag-outline">업데이트</span>
-            </div>
-            <div class="row-item">
-              <span>연체 94일 — 경매 신청 권고</span>
-              <span class="tag tag-black">긴급</span>
-            </div>
-            <div class="row-item">
-              <span>상호저축은행업 감독규정 개정 (2025.12)</span>
-              <span class="tag tag-gray">참고</span>
-            </div>
-          </div>
-        </div>
 
-        <hr class="divider">
-        <div class="sec-label"><span>바로가기 /</span></div>
-        <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:0;border:1px solid #e5e5e5;">
-          <div onclick="navTo('doc-form',null)" style="padding:22px 20px;border-right:1px solid #e5e5e5;cursor:pointer;transition:background .1s;" onmouseover="this.style.background='#f9f9f9'" onmouseout="this.style.background=''">
-            <div style="font-size:22px;margin-bottom:10px;">▣</div>
-            <div style="font-weight:700;font-size:13px;margin-bottom:3px;">서류 자동 생성</div>
-            <div style="font-size:11px;color:#999;">8종 법률 서류</div>
-          </div>
-          <div onclick="navTo('calc',null)" style="padding:22px 20px;border-right:1px solid #e5e5e5;cursor:pointer;transition:background .1s;" onmouseover="this.style.background='#f9f9f9'" onmouseout="this.style.background=''">
-            <div style="font-size:22px;margin-bottom:10px;">≡</div>
-            <div style="font-weight:700;font-size:13px;margin-bottom:3px;">채권계산기</div>
-            <div style="font-size:11px;color:#999;">원리금 자동 계산</div>
-          </div>
-          <div onclick="navTo('law',null)" style="padding:22px 20px;border-right:1px solid #e5e5e5;cursor:pointer;transition:background .1s;" onmouseover="this.style.background='#f9f9f9'" onmouseout="this.style.background=''">
-            <div style="font-size:22px;margin-bottom:10px;">◇</div>
-            <div style="font-weight:700;font-size:13px;margin-bottom:3px;">법령 검색</div>
-            <div style="font-size:11px;color:#999;">최신 고시 · 감독규정</div>
-          </div>
-          <div onclick="alert('집변 변호사 상담 연결 중…')" style="padding:22px 20px;cursor:pointer;transition:background .1s;" onmouseover="this.style.background='#f9f9f9'" onmouseout="this.style.background=''">
-            <div style="font-size:22px;margin-bottom:10px;">◉</div>
-            <div style="font-weight:700;font-size:13px;margin-bottom:3px;">집변 법률상담</div>
-            <div style="font-size:11px;color:#999;">전담 변호사 연결</div>
-          </div>
-        </div>
+          <!-- Messages stream (appended dynamically) -->
+          <div id="chat-messages"></div>
 
-      </div>
-    </div>
-
-    <!-- ── SEARCH RESULT ── -->
-    <div id="sc-search" class="screen">
-      <div class="content">
-        <div class="sec-label"><span>즉문즉답 /</span> 검색 결과</div>
-
-        <div style="border:1px solid #000;padding:18px 22px;margin-bottom:28px;">
-          <div style="font-size:11px;color:#999;margin-bottom:6px;">검색 질의</div>
-          <div style="font-size:18px;font-weight:700;" id="result-q">"연체 3개월, 담보 부동산 있음, 다음 절차는?"</div>
-          <div style="display:flex;gap:16px;margin-top:12px;padding-top:12px;border-top:1px solid #e5e5e5;font-size:12px;color:#999;">
-            <span>📚 사례집 4건</span><span>📘 지침 2건</span><span>⚖️ 법령 3건</span><span>🏛 판례 1건</span>
-            <span style="margin-left:auto;font-weight:600;color:#000;">● 실시간 인덱스 · 2026-04-22</span>
-          </div>
-        </div>
-
-        <!-- Block 1 -->
-        <div class="block-card active" style="margin-bottom:16px;">
-          <div style="display:flex;align-items:center;gap:8px;margin-bottom:14px;">
-            <span style="border:1px solid #000;padding:3px 10px;font-size:11px;font-weight:700;background:#000;color:#fff;">① 사례집 처리 방식</span>
-          </div>
-          <div class="answer-title"><span class="answer-num">1</span>저축은행중앙회 여신관리 예규 제42호 — 연체채권 관리절차</div>
-          <div class="answer-body">담보 부동산(근저당권)이 설정된 경우, <strong>연체 90일 초과 시 임의경매 신청</strong>을 우선 검토합니다. 근저당권 설정이 확인되면 별도 집행권원 없이 경매 신청이 가능하며, 채권최고액 범위 내에서 우선변제권이 인정됩니다.</div>
-          <div class="answer-cite">
-            <span>출처: 저축은행중앙회 예규 제42호 제3장 제12조</span>
-            <span class="conf">신뢰도 92%</span>
-          </div>
-        </div>
-
-        <!-- Block 2 -->
-        <div class="block-card">
-          <div style="display:flex;align-items:center;gap:8px;margin-bottom:14px;">
-            <span style="border:1px solid #e5e5e5;padding:3px 10px;font-size:11px;font-weight:700;">② 지침상 규정</span>
-          </div>
-          <div class="answer-title"><span class="answer-num">2</span>금감원 여신건전성 분류 기준 — 고정이하여신 분류</div>
-          <div class="answer-body">3개월 이상 연체 채권은 <strong>"고정" 이하로 분류</strong>합니다. 대손충당금 20% 이상 적립이 필요하며, 6개월 초과 시 "회수의문"으로 격하되어 적립률이 50%로 상승합니다.</div>
-          <div class="answer-cite">
-            <span>출처: 상호저축은행업 감독규정 제29조 / 금감원 건전성 분류 가이드라인</span>
-            <span class="conf">신뢰도 95%</span>
-          </div>
-        </div>
-
-        <!-- Block 3 -->
-        <div class="block-card">
-          <div style="display:flex;align-items:center;gap:8px;margin-bottom:14px;">
-            <span style="border:1px solid #e5e5e5;padding:3px 10px;font-size:11px;font-weight:700;">③ 회계기준</span>
-          </div>
-          <div class="answer-title"><span class="answer-num">3</span>K-IFRS 1109 금융자산 손상 — Stage 3 분류</div>
-          <div class="answer-body">신용위험이 유의적으로 증가하여 Stage 3으로 분류됩니다. <strong>전체 기간 기대신용손실</strong>을 인식해야 하며, 이자수익은 순장부금액 기준으로 인식합니다.</div>
-          <div class="answer-cite">
-            <span>출처: 한국회계기준원 K-IFRS 1109 문단 5.5.3</span>
-            <span class="conf">신뢰도 98%</span>
-          </div>
-        </div>
-
-        <!-- Block 4 -->
-        <div class="block-card">
-          <div style="display:flex;align-items:center;gap:8px;margin-bottom:14px;">
-            <span style="border:1px solid #e5e5e5;padding:3px 10px;font-size:11px;font-weight:700;">④ 유사 사례 · 판례</span>
-          </div>
-          <div class="answer-title"><span class="answer-num">4</span>대법원 2021다248903 — 근저당권자의 임의경매 신청</div>
-          <div class="answer-body">근저당권자는 피담보채무 불이행 시 민사집행법 제264조에 의하여 경매를 신청할 수 있으며, 채권최고액 범위 내에서 원금·이자·지연손해금에 대해 우선변제권이 인정된다.</div>
-          <div class="answer-cite">
-            <span>출처: 대법원 2021다248903 판결 / 민사집행법 제264조</span>
-            <span class="conf">신뢰도 90%</span>
-          </div>
-        </div>
-
-        <div class="action-row">
-          <button class="btn btn-primary" onclick="navTo('doc-form',null)">임의경매 신청서 생성 →</button>
-          <button class="btn btn-outline" onclick="navTo('calc',null)">채권계산서 생성</button>
-          <button class="btn btn-ghost" onclick="alert('집변 변호사 상담 요청 전송 완료')">집변 변호사 상담</button>
-          <button class="btn btn-ghost" style="margin-left:auto;">PDF 저장</button>
         </div>
       </div>
+
+      <div class="composer-wrap">
+        <div class="composer-inner">
+          <div class="composer-box">
+            <textarea class="composer-textarea" id="composer" rows="1"
+              placeholder='질문을 입력하세요. 예) "연체 3개월, 담보 부동산 있음, 다음 절차는?"'
+              oninput="autoResize(this)"
+              onkeydown="if(event.key==='Enter' && !event.shiftKey){event.preventDefault();sendFromComposer()}"></textarea>
+            <button class="composer-send" id="send-btn" onclick="sendFromComposer()">보내기</button>
+          </div>
+          <div class="composer-meta">
+            <div class="srcs">
+              <span>법령센터 API</span>
+              <span>감독규정</span>
+              <span>내부 규정</span>
+              <span>사례집</span>
+              <span>유권해석</span>
+              <span>판례</span>
+            </div>
+            <div>Enter 전송 · Shift+Enter 줄바꿈</div>
+          </div>
+        </div>
+      </div>
+
     </div>
 
-    <!-- ── DOC FORM ── -->
+    <!-- ══════════ DOC FORM ══════════ -->
     <div id="sc-doc-form" class="screen">
-      <div class="content">
+      <div class="content-inner">
         <div class="sec-label"><span>서류 생성 /</span> 지급명령 신청서</div>
         <div style="font-size:20px;font-weight:700;margin-bottom:6px;">서류 생성: 지급명령 신청서</div>
         <div style="font-size:13px;color:#999;margin-bottom:32px;">서류에 들어갈 구체적인 정보를 입력해주세요. <span style="color:#000;font-weight:600;">*</span> 필수 항목</div>
 
         <div class="form-grid">
-          <div class="form-field">
-            <label>채무자명 <span class="req">*</span></label>
-            <input class="input" id="f-debtor" type="text" value="홍길동">
-          </div>
-          <div class="form-field">
-            <label>대출 실행일 <span class="req">*</span></label>
-            <input class="input-box" id="f-loandate" type="date" value="2025-01-15">
-          </div>
-          <div class="form-field">
-            <label>계좌번호 <span class="req">*</span></label>
-            <input class="input" id="f-account" type="text" value="1234-56-7890123">
-          </div>
-          <div class="form-field">
-            <label>연체 시작일 <span class="req">*</span></label>
-            <input class="input-box" id="f-overdue" type="date" value="2026-02-15">
-          </div>
-          <div class="form-field">
-            <label>원금 (원) <span class="req">*</span></label>
-            <input class="input" id="f-principal" type="number" value="50000000">
-          </div>
-          <div class="form-field">
-            <label>지연손해율 (%) <span class="req">*</span></label>
-            <input class="input" id="f-delay" type="number" value="15" step="0.1">
-          </div>
-          <div class="form-field">
-            <label>약정 이자율 (%) <span class="req">*</span></label>
-            <input class="input" id="f-rate" type="number" value="4.5" step="0.1">
-          </div>
-          <div class="form-field">
-            <label>관할 법원</label>
-            <input class="input" id="f-court" type="text" value="서울중앙지방법원">
-          </div>
+          <div class="form-field"><label>채무자명 <span class="req">*</span></label><input class="input" id="f-debtor" type="text" value="홍길동"></div>
+          <div class="form-field"><label>대출 실행일 <span class="req">*</span></label><input class="input-box" id="f-loandate" type="date" value="2025-01-15"></div>
+          <div class="form-field"><label>계좌번호 <span class="req">*</span></label><input class="input" id="f-account" type="text" value="1234-56-7890123"></div>
+          <div class="form-field"><label>연체 시작일 <span class="req">*</span></label><input class="input-box" id="f-overdue" type="date" value="2026-02-15"></div>
+          <div class="form-field"><label>원금 (원) <span class="req">*</span></label><input class="input" id="f-principal" type="number" value="50000000"></div>
+          <div class="form-field"><label>지연손해율 (%) <span class="req">*</span></label><input class="input" id="f-delay" type="number" value="15" step="0.1"></div>
+          <div class="form-field"><label>약정 이자율 (%) <span class="req">*</span></label><input class="input" id="f-rate" type="number" value="4.5" step="0.1"></div>
+          <div class="form-field"><label>관할 법원</label><input class="input" id="f-court" type="text" value="서울중앙지방법원"></div>
         </div>
 
         <div class="notice-bar">
-          <span class="ico">ℹ</span>
-          <span>AI가 입력 정보를 바탕으로 <strong>지급명령 신청서</strong>와 <strong>채권계산서</strong>를 자동 생성합니다. 법원 표준 양식에 맞춰 PDF로 다운로드됩니다.</span>
+          AI가 입력 정보를 바탕으로 <strong>지급명령 신청서</strong>와 <strong>채권계산서</strong>를 자동 생성합니다. 법원 표준 양식에 맞춰 PDF로 다운로드됩니다.
         </div>
 
-        <button class="btn btn-primary btn-lg" onclick="navTo('doc-preview',null)" style="margin-top:4px;">서류 생성하기 →</button>
+        <button class="btn btn-primary btn-lg" onclick="navTo('doc-preview',null)" style="margin-top:4px;">서류 생성하기</button>
       </div>
     </div>
 
-    <!-- ── DOC PREVIEW ── -->
+    <!-- ══════════ DOC PREVIEW ══════════ -->
     <div id="sc-doc-preview" class="screen">
-      <div class="content" style="max-width:1000px;">
+      <div class="content-inner" style="max-width:1100px;">
         <div class="sec-label"><span>서류 미리보기 /</span> 지급명령 신청서</div>
 
         <div style="display:grid;grid-template-columns:1fr 180px;gap:24px;align-items:start;">
@@ -654,14 +689,14 @@ body {
             <div class="doc-total">합 계: 금 <span id="p-total2">50,000,000</span>원</div>
             <div class="doc-footer">
               위 청구금액을 변제받기 위하여 「민사소송법」 제462조에 의하여<br>이 사건 지급명령을 신청합니다.<br><br>
-              <div style="text-align:center;">2026년 4월 22일</div><br>
+              <div style="text-align:center;">2026년 4월 23일</div><br>
               <div style="text-align:right;">위 채권자 [<span id="p-inst2">신협</span>] <span id="p-instname2">서울중앙신협</span> (인)<br>담당자: <span id="p-user">김담당</span></div><br>
               <div style="text-align:center;font-weight:700;"><span id="p-court">서울중앙지방법원</span> 귀중</div>
             </div>
           </div>
 
           <div style="display:flex;flex-direction:column;gap:8px;position:sticky;top:72px;">
-            <button class="btn btn-primary btn-full" onclick="navTo('doc-complete',null)">최종 완료 →</button>
+            <button class="btn btn-primary btn-full" onclick="navTo('doc-complete',null)">최종 완료</button>
             <button class="btn btn-outline btn-full" onclick="navTo('doc-form',null)">수정</button>
             <button class="btn btn-ghost btn-full">PDF 다운로드</button>
             <button class="btn btn-ghost btn-full">인쇄</button>
@@ -671,11 +706,11 @@ body {
       </div>
     </div>
 
-    <!-- ── DOC COMPLETE ── -->
+    <!-- ══════════ DOC COMPLETE ══════════ -->
     <div id="sc-doc-complete" class="screen">
-      <div class="content">
+      <div class="content-inner">
         <div class="complete-wrap">
-          <div class="check">✓</div>
+          <div class="complete-mark">V</div>
           <h2>서류 생성 완료</h2>
           <p>지급명령 신청서가 생성되었습니다.<br>필요 시 변호사 검토 후 제출해 주세요.</p>
           <div class="gen-item"><span class="name">지급명령 신청서</span><span class="badge">AI 자동생성</span></div>
@@ -683,63 +718,32 @@ body {
           <div class="action-row" style="justify-content:center;">
             <button class="btn btn-ghost" onclick="navTo('doc-preview',null)">미리보기</button>
             <button class="btn btn-outline" onclick="alert('변호사 검토 요청 전송 완료')">변호사 검토</button>
-            <button class="btn btn-primary" onclick="navTo('dash',null)">대시보드 →</button>
+            <button class="btn btn-primary" onclick="navTo('chat',null)">AI 상담으로</button>
           </div>
         </div>
       </div>
     </div>
 
-    <!-- ── CALCULATOR ── -->
+    <!-- ══════════ CALCULATOR ══════════ -->
     <div id="sc-calc" class="screen">
-      <div class="content">
+      <div class="content-inner">
         <div class="sec-label"><span>채권계산기 /</span> 원금 · 이자 · 지연손해금 자동 계산</div>
-
         <div class="calc-grid">
           <div class="calc-inputs">
             <div style="font-size:11px;font-weight:600;color:#999;letter-spacing:0.1em;margin-bottom:20px;">INPUT</div>
-            <div class="form-field">
-              <label>원금 (원)</label>
-              <input class="input" id="c-principal" type="number" value="100000000" oninput="calcDebt()">
-            </div>
-            <div class="form-field">
-              <label>대출 실행일</label>
-              <input class="input-box" id="c-loandate" type="date" value="2025-01-15" oninput="calcDebt()">
-            </div>
-            <div class="form-field">
-              <label>약정 이자율 (%)</label>
-              <input class="input" id="c-rate" type="number" value="4.5" step="0.1" oninput="calcDebt()">
-            </div>
-            <div class="form-field">
-              <label>연체 시작일</label>
-              <input class="input-box" id="c-overdue" type="date" value="2026-01-15" oninput="calcDebt()">
-            </div>
-            <div class="form-field">
-              <label>지연손해율 (%)</label>
-              <input class="input" id="c-delay" type="number" value="15" step="0.1" oninput="calcDebt()">
-            </div>
-            <div class="form-field">
-              <label>계산 기준일</label>
-              <input class="input-box" id="c-target" type="date" value="2026-04-22" oninput="calcDebt()">
-            </div>
+            <div class="form-field"><label>원금 (원)</label><input class="input" id="c-principal" type="number" value="100000000" oninput="calcDebt()"></div>
+            <div class="form-field"><label>대출 실행일</label><input class="input-box" id="c-loandate" type="date" value="2025-01-15" oninput="calcDebt()"></div>
+            <div class="form-field"><label>약정 이자율 (%)</label><input class="input" id="c-rate" type="number" value="4.5" step="0.1" oninput="calcDebt()"></div>
+            <div class="form-field"><label>연체 시작일</label><input class="input-box" id="c-overdue" type="date" value="2026-01-15" oninput="calcDebt()"></div>
+            <div class="form-field"><label>지연손해율 (%)</label><input class="input" id="c-delay" type="number" value="15" step="0.1" oninput="calcDebt()"></div>
+            <div class="form-field"><label>계산 기준일</label><input class="input-box" id="c-target" type="date" value="2026-04-23" oninput="calcDebt()"></div>
           </div>
-
           <div class="calc-results">
             <div style="font-size:11px;font-weight:600;color:#999;letter-spacing:0.1em;margin-bottom:20px;">RESULT</div>
-            <div class="calc-result-row">
-              <span>원금</span><span class="calc-result-val" id="r-principal">100,000,000원</span>
-            </div>
-            <div class="calc-result-row">
-              <span id="r-interest-lbl">이자 (연 4.5%, 365일)</span>
-              <span class="calc-result-val" id="r-interest">4,500,000원</span>
-            </div>
-            <div class="calc-result-row">
-              <span id="r-delay-lbl">지연손해금 (연 15%, 97일)</span>
-              <span class="calc-result-val" id="r-delay">3,986,301원</span>
-            </div>
-            <div class="calc-total-box">
-              <span class="label">합계</span>
-              <span class="val" id="r-total">108,486,301원</span>
-            </div>
+            <div class="calc-result-row"><span>원금</span><span class="calc-result-val" id="r-principal">100,000,000원</span></div>
+            <div class="calc-result-row"><span id="r-interest-lbl">이자 (연 4.5%, 365일)</span><span class="calc-result-val" id="r-interest">4,500,000원</span></div>
+            <div class="calc-result-row"><span id="r-delay-lbl">지연손해금 (연 15%, 97일)</span><span class="calc-result-val" id="r-delay">3,986,301원</span></div>
+            <div class="calc-total-box"><span class="label">합계</span><span class="val" id="r-total">108,486,301원</span></div>
             <div class="calc-legal">
               <strong>법률 근거</strong><br>
               • 소송촉진법 §3① (연 12%) 적용 시: 별도 산출<br>
@@ -754,46 +758,25 @@ body {
       </div>
     </div>
 
-    <!-- ── LAW SEARCH ── -->
+    <!-- ══════════ LAW INDEX ══════════ -->
     <div id="sc-law" class="screen">
-      <div class="content">
-        <div class="sec-label"><span>법령 검색 /</span> 법령 · 조항 · 판례를 일상 언어로</div>
+      <div class="content-inner">
+        <div class="sec-label"><span>법령 · 규정 색인 /</span> 참조 데이터 현황</div>
 
-        <div class="search-wrap" style="margin-bottom:28px;">
-          <input class="input" type="text" value="3개월 연체 시 기한의 이익 상실 요건" id="law-input">
-          <button class="btn btn-primary">검색</button>
+        <div class="source-grid" style="margin-bottom:32px;">
+          <div class="source-cell"><div class="src-num">01</div><div class="src-name">법령센터 OpenAPI</div><div class="src-desc">142,305건 · 실시간 동기화</div></div>
+          <div class="source-cell"><div class="src-num">02</div><div class="src-name">감독 · 지침 규정</div><div class="src-desc">687건 · 최종 2026-02-09</div></div>
+          <div class="source-cell"><div class="src-num">03</div><div class="src-name">기관 내부 규정</div><div class="src-desc">42건 · 소속 기관 업로드</div></div>
+          <div class="source-cell"><div class="src-num">04</div><div class="src-name">내부 사례집</div><div class="src-desc">1,204건 · 실무·감사 지적</div></div>
+          <div class="source-cell"><div class="src-num">05</div><div class="src-name">유권해석</div><div class="src-desc">2,881건 · 법제처·금감원·금융위</div></div>
+          <div class="source-cell"><div class="src-num">06</div><div class="src-name">판례</div><div class="src-desc">58,920건 · 대법원·하급심·결정례</div></div>
         </div>
 
-        <div style="margin-bottom:24px;">
-          <div class="sec-label"><span>최근 지침 · 고시 /</span></div>
-          <div class="row-item"><span>새마을금고 감독기준 일부개정</span><span class="meta">2026.02.09</span></div>
-          <div class="row-item"><span>상호저축은행업 감독규정 개정</span><span class="meta">2025.12.16</span></div>
-          <div class="row-item"><span>채권추심법 시행령 일부개정</span><span class="meta">2025.11.20</span></div>
-        </div>
-
-        <div class="sec-label"><span>검색 결과 /</span></div>
-
-        <div class="law-result">
-          <div class="law-result-title">민법 제388조 — 기한의 이익의 상실</div>
-          <div class="law-result-body">채무자는 다음 각 호의 경우에는 기한의 이익을 주장하지 못한다: 1. 채무자가 담보를 손상·감소 또는 멸실하게 한 때 2. 채무자가 담보제공의 의무를 이행하지 아니한 때</div>
-          <div class="law-result-src">출처: 민법 제388조 (법제처)</div>
-        </div>
-
-        <div class="law-result">
-          <div class="law-result-title">상호저축은행업 감독규정 제29조 — 여신건전성 분류</div>
-          <div class="law-result-body">1개월 이상 3개월 미만 연체: "요주의" / 3개월 이상 연체: "고정" 이하 / 기한이익 상실 사유 해당 시 채권 전액을 "고정" 이하로 분류</div>
-          <div class="law-result-src">출처: 상호저축은행업 감독규정 제29조</div>
-        </div>
-
-        <div class="law-result">
-          <div class="law-result-title">민사소송법 제462조 — 지급명령 요건</div>
-          <div class="law-result-body">금전 기타 대체물이나 유가증권의 일정한 수량의 지급을 구하는 경우 지급명령 신청 가능. 채무자가 국내에 주소를 두고 있어야 하며, 소재 불명인 경우 신청 불가.</div>
-          <div class="law-result-src">출처: 민사소송법 제462조~제471조</div>
-        </div>
-
-        <div class="ai-box">
-          <div class="ai-label">AI 요약</div>
-          <p>3개월 연체 시 <strong>대출약정서상 기한이익 상실 조항</strong>이 적용됩니다. 민법 제388조와 대출약정서의 기한이익 상실 특약에 따라 잔여 대출금 전액의 즉시 상환을 청구할 수 있습니다. 감독규정상 해당 채권은 <strong>"고정" 이하</strong>로 분류되며, 대손충당금 20% 이상 적립이 필요합니다.</p>
+        <div class="sec-label"><span>최근 지침 · 고시 /</span></div>
+        <div style="border:1px solid #e5e5e5;">
+          <div style="display:flex;justify-content:space-between;padding:13px 18px;border-bottom:1px solid #e5e5e5;font-size:13px;"><span>새마을금고 감독기준 일부개정</span><span style="color:#999;font-size:11px;">2026.02.09</span></div>
+          <div style="display:flex;justify-content:space-between;padding:13px 18px;border-bottom:1px solid #e5e5e5;font-size:13px;"><span>상호저축은행업 감독규정 개정</span><span style="color:#999;font-size:11px;">2025.12.16</span></div>
+          <div style="display:flex;justify-content:space-between;padding:13px 18px;font-size:13px;"><span>채권추심법 시행령 일부개정</span><span style="color:#999;font-size:11px;">2025.11.20</span></div>
         </div>
       </div>
     </div>
@@ -824,31 +807,306 @@ function doLogin() {
 }
 
 const TITLES = {
-  dash:'대시보드', search:'즉문즉답 검색',
+  chat:'AI 상담',
   'doc-form':'서류 자동 생성', 'doc-preview':'서류 미리보기',
-  'doc-complete':'서류 생성 완료', calc:'채권계산기', law:'법령 검색'
+  'doc-complete':'서류 생성 완료', calc:'채권계산기', law:'법령 · 규정 색인'
 };
 
 function navTo(name, navEl) {
   document.querySelectorAll('.screen').forEach(s => s.classList.remove('active'));
-  document.getElementById('sc-' + name).classList.add('active');
+  const target = document.getElementById('sc-' + name);
+  if (target) target.classList.add('active');
   document.querySelectorAll('.nav-item').forEach(n => n.classList.remove('active'));
   if (navEl) navEl.classList.add('active');
+  else {
+    const map = { chat:0, 'doc-form':1, calc:2, law:3 };
+    const idx = map[name];
+    if (idx !== undefined) document.querySelectorAll('.nav-item')[idx]?.classList.add('active');
+  }
   document.getElementById('tb-title').textContent = TITLES[name] || name;
   document.querySelector('.main-area').scrollTop = 0;
   if (name === 'doc-preview') fillPreview();
   if (name === 'calc') calcDebt();
 }
 
-function setQ(q) { document.getElementById('dash-search').value = q; }
+/* ══════════════════════════════
+   CHAT ENGINE
+══════════════════════════════ */
 
-function runSearch() {
-  const q = document.getElementById('dash-search').value.trim();
-  if (!q) return;
-  document.getElementById('result-q').textContent = `"${q}"`;
-  navTo('search', document.querySelectorAll('.nav-item')[1]);
+function autoResize(el) {
+  el.style.height = 'auto';
+  el.style.height = Math.min(el.scrollHeight, 180) + 'px';
 }
 
+function newChat() {
+  document.getElementById('chat-messages').innerHTML = '';
+  document.getElementById('chat-welcome').style.display = 'block';
+  navTo('chat', null);
+  document.getElementById('composer').value = '';
+  autoResize(document.getElementById('composer'));
+}
+
+function loadPrompt(q) {
+  newChat();
+  document.getElementById('composer').value = q;
+  autoResize(document.getElementById('composer'));
+  document.getElementById('composer').focus();
+}
+
+function sendPrompt(q) {
+  document.getElementById('composer').value = q;
+  sendFromComposer();
+}
+
+function sendFromComposer() {
+  const ta = document.getElementById('composer');
+  const q = ta.value.trim();
+  if (!q) return;
+  ta.value = '';
+  autoResize(ta);
+  document.getElementById('chat-welcome').style.display = 'none';
+  appendUser(q);
+  startAssistantFlow(q);
+}
+
+function appendUser(text) {
+  const box = document.getElementById('chat-messages');
+  const row = document.createElement('div');
+  row.className = 'msg-row user';
+  row.innerHTML = `
+    <div class="msg-avatar">나</div>
+    <div class="msg-body">
+      <div class="msg-role">사용자</div>
+      <div class="msg-text">${escapeHTML(text)}</div>
+    </div>`;
+  box.appendChild(row);
+  scrollBottom();
+}
+
+function escapeHTML(s) {
+  return s.replace(/[&<>"']/g, c => ({ '&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;' }[c]));
+}
+
+function scrollBottom() {
+  const s = document.getElementById('chat-stream');
+  setTimeout(() => { s.scrollTop = s.scrollHeight; }, 10);
+}
+
+/* Dataset of canned answers — demo realism */
+const ANSWERS = {
+  default: {
+    intro: '질의하신 사항에 대해 <strong>법령센터, 기관 감독규정, 내부 사례집, 판례</strong>를 교차 검토한 결과를 정리해 드립니다.',
+    body: `
+      <p>담보 부동산(근저당권)이 설정된 <strong>연체 90일 초과 채권</strong>의 경우, 일반적으로 다음 절차를 따릅니다.</p>
+      <ol>
+        <li><strong>기한의 이익 상실 통보</strong> — 대출약정서 특약에 따라 잔여 원금 즉시 상환 청구</li>
+        <li><strong>채권계산서 확정</strong> — 원금·이자·지연손해금 기준일 고정</li>
+        <li><strong>임의경매 신청</strong> — 근저당권 집행권원 없이 신청 가능 (민사집행법 제264조)</li>
+        <li><strong>여신건전성 재분류</strong> — "고정" 이하, 대손충당금 20% 적립 (감독규정 제29조)</li>
+      </ol>
+      <p>담보권이 있으므로 <strong>지급명령·소송 없이 임의경매 신청</strong>이 가장 효율적입니다. 채권최고액 범위 내에서 원금·이자·지연손해금 모두 우선변제권이 인정됩니다.</p>`,
+    cites: [
+      { num:1, kind:'감독규정', title:'상호저축은행업 감독규정 제29조 — 여신건전성 분류', body:'3개월 이상 연체 채권은 "고정" 이하로 분류하며, 대손충당금 20% 이상 적립이 필요합니다. 6개월 초과 시 "회수의문"으로 격하되어 적립률이 50%로 상승합니다.', src:'금융위원회 고시 2025-47호', conf:95 },
+      { num:2, kind:'내부 사례집', title:'저축은행중앙회 여신관리 예규 제42호', body:'근저당권이 설정된 연체채권은 90일 초과 시 임의경매 신청을 우선 검토합니다. 별도 집행권원 없이 신청 가능하며 채권최고액 범위 내 우선변제권이 인정됩니다.', src:'중앙회 예규 제42호 제3장 제12조', conf:92 },
+      { num:3, kind:'법령', title:'민사집행법 제264조 — 부동산에 대한 경매신청', body:'담보권을 가진 채권자는 집행권원 없이 담보물에 대한 경매를 신청할 수 있다. 신청서에는 담보권의 존재를 증명하는 서류를 붙여야 한다.', src:'법령센터 OpenAPI · 민사집행법', conf:98 },
+      { num:4, kind:'판례', title:'대법원 2021다248903 — 근저당권자의 임의경매 신청', body:'근저당권자는 피담보채무 불이행 시 민사집행법 제264조에 의하여 경매를 신청할 수 있으며, 채권최고액 범위 내에서 원금·이자·지연손해금에 대해 우선변제권이 인정된다.', src:'대법원 판결', conf:90 },
+      { num:5, kind:'회계기준', title:'K-IFRS 1109 금융자산 손상 — Stage 3', body:'신용위험이 유의적으로 증가하여 Stage 3으로 분류됩니다. 전체 기간 기대신용손실을 인식해야 하며, 이자수익은 순장부금액 기준으로 인식합니다.', src:'한국회계기준원', conf:93 }
+    ],
+    cta: [
+      { label:'임의경매 신청서 생성', primary:true, action:"navTo('doc-form',null)" },
+      { label:'채권계산기 열기', primary:false, action:"navTo('calc',null)" },
+      { label:'집변 변호사 검토 요청', primary:false, action:"alert('집변 변호사 상담 요청이 전송되었습니다.')" }
+    ]
+  },
+  '지급명령': {
+    intro: '무담보 대출의 지급명령 신청 가능 여부를 <strong>민사소송법·채권추심법·내부 사례집</strong> 기준으로 정리했습니다.',
+    body: `
+      <p>연체 60일 시점에도 <strong>지급명령 신청은 가능</strong>합니다. 지급명령은 연체 기간과 무관하게 요건만 충족하면 신청할 수 있습니다.</p>
+      <ol>
+        <li><strong>요건</strong> — 금전 지급 청구 · 채무자 국내 주소 확인 (민사소송법 §462)</li>
+        <li><strong>관할</strong> — 채무자 주소지 관할 지방법원</li>
+        <li><strong>사전 절차</strong> — 내용증명 발송 권장 (추심법 §8의2 절차 준수)</li>
+        <li><strong>이의신청 대응</strong> — 2주 내 이의 없으면 확정, 이의 시 통상 소송으로 이행</li>
+      </ol>
+      <p>다만 <strong>실무상 연체 90일 이후</strong> 신청이 일반적입니다. 내용증명 발송 → 30일 경과 → 지급명령 순으로 진행하시길 권고합니다.</p>`,
+    cites: [
+      { num:1, kind:'법령', title:'민사소송법 제462조 — 지급명령 요건', body:'금전 기타 대체물이나 유가증권의 일정한 수량의 지급을 구하는 경우 지급명령 신청 가능. 채무자가 국내에 주소를 두고 있어야 하며, 소재 불명인 경우 신청 불가.', src:'법령센터 OpenAPI · 민사소송법', conf:98 },
+      { num:2, kind:'법령', title:'채권의 공정한 추심에 관한 법률 제8조의2', body:'채권추심자는 채무자에게 소멸시효 완성 채권임을 알리지 아니하고 추심할 수 없으며, 야간 추심 및 반복적 연락은 금지된다.', src:'법령센터 · 채권추심법', conf:96 },
+      { num:3, kind:'유권해석', title:'법원행정처 질의회신 — 지급명령 이의 후 소송 이행', body:'지급명령에 대한 이의신청이 있으면 민사소송법 제472조에 따라 통상 소송절차로 이행되며, 지급명령 신청서는 소장에 갈음한다.', src:'법원행정처 2023-질의-104', conf:88 },
+      { num:4, kind:'내부 사례집', title:'무담보 신용대출 연체 회수 프로세스', body:'연체 30일 1차 독촉 → 60일 내용증명 → 90일 지급명령 → 120일 가압류 병행이 표준 절차. 지급명령 확정 시 회수율 평균 42%.', src:'실무 사례집 2025년 통합편', conf:85 }
+    ],
+    cta: [
+      { label:'지급명령 신청서 생성', primary:true, action:"navTo('doc-form',null)" },
+      { label:'내용증명 초안 작성', primary:false, action:"alert('내용증명 자동 초안 생성은 다음 릴리즈 예정입니다.')" },
+      { label:'채권계산기 열기', primary:false, action:"navTo('calc',null)" }
+    ]
+  },
+  '기한': {
+    intro: '기한의 이익 상실은 <strong>민법 제388조와 대출약정서 특약</strong>이 결합되어 적용됩니다. 핵심 요건과 실무 적용 시점을 정리합니다.',
+    body: `
+      <p><strong>법정 사유 (민법 제388조)</strong></p>
+      <ul>
+        <li>채무자가 담보를 손상·감소·멸실하게 한 때</li>
+        <li>채무자가 담보제공 의무를 이행하지 않은 때</li>
+      </ul>
+      <p><strong>약정 사유 (대출약정서 특약)</strong></p>
+      <ol>
+        <li>이자·분할상환금을 <strong>2회 이상 연체</strong>한 때</li>
+        <li>신용상태 현저히 악화 (회생·파산·압류 등)</li>
+        <li>허위 정보 제공 등 신의성실 위반</li>
+      </ol>
+      <p>감독규정상 3개월 이상 연체 시 여신건전성 "고정" 이하로 분류되므로, 동시에 기한이익 상실을 통보하여 <strong>잔여 원금 전액 상환</strong>을 청구하는 것이 표준 실무입니다.</p>`,
+    cites: [
+      { num:1, kind:'법령', title:'민법 제388조 — 기한의 이익의 상실', body:'채무자는 다음 각 호의 경우에는 기한의 이익을 주장하지 못한다: 1. 채무자가 담보를 손상·감소 또는 멸실하게 한 때 2. 채무자가 담보제공의 의무를 이행하지 아니한 때.', src:'법령센터 OpenAPI · 민법', conf:98 },
+      { num:2, kind:'감독규정', title:'여신건전성 분류 기준 — 고정이하여신', body:'3개월 이상 연체 채권은 "고정" 이하로 분류합니다. 대손충당금 20% 이상 적립이 필요하며, 기한이익 상실 사유 해당 시 채권 전액을 "고정" 이하로 분류.', src:'상호저축은행업 감독규정 제29조', conf:95 },
+      { num:3, kind:'판례', title:'대법원 2017다211148 — 기한이익 상실 통지 효력', body:'약정 기한이익 상실 사유가 발생한 경우에도 채권자의 통지 또는 청구가 있어야 상실의 효과가 발생한다고 해석된다. 단, 자동 상실 특약이 명시된 경우에는 통지 없이 상실 효과가 발생.', src:'대법원 판결', conf:91 },
+      { num:4, kind:'유권해석', title:'금융위 질의회신 — 분할상환 2회 연체 기준', body:'분할상환 방식 대출에서 "2회 연체"는 반드시 연속될 필요는 없으며, 누적 2회 연체 시점부터 기한이익 상실 사유가 성립할 수 있다.', src:'금융위원회 2022-질의-087', conf:86 }
+    ],
+    cta: [
+      { label:'기한이익 상실 통지서 생성', primary:true, action:"navTo('doc-form',null)" },
+      { label:'법령 색인에서 자세히 보기', primary:false, action:"navTo('law',null)" }
+    ]
+  },
+  '추심': {
+    intro: '채권추심 시 준수해야 할 법정 금지사항을 <strong>채권추심법·감독규정·판례</strong> 기준으로 정리합니다.',
+    body: `
+      <p><strong>야간 추심 제한</strong></p>
+      <ul>
+        <li><strong>21시부터 익일 08시까지</strong> 전화·방문·문자 추심 금지 (채권추심법 시행령 §3의2)</li>
+        <li>예외 없음. 채무자 동의 있어도 권고 아님</li>
+      </ul>
+      <p><strong>반복 연락 금지</strong></p>
+      <ul>
+        <li>1일 3회 초과 전화·문자 금지</li>
+        <li>단시간 집중 연락도 위반 가능</li>
+      </ul>
+      <p><strong>위반 시 제재</strong></p>
+      <ol>
+        <li>과태료 — 2,000만원 이하</li>
+        <li>형사처벌 — 3년 이하 징역 또는 3,000만원 이하 벌금 (협박·공포 유발 시)</li>
+        <li>행정처분 — 등록취소·업무정지 (전문 추심업자)</li>
+      </ol>`,
+    cites: [
+      { num:1, kind:'법령', title:'채권의 공정한 추심에 관한 법률 제8조의2 · 제9조', body:'채무자가 일정 시간대(야간 등)에 추심 연락을 받지 않도록 제한하고, 공포·불안을 유발하는 언동을 금지한다.', src:'법령센터 · 채권추심법', conf:98 },
+      { num:2, kind:'시행령', title:'채권추심법 시행령 제3조의2 — 야간 추심 시간', body:'오후 9시부터 다음 날 오전 8시까지는 전화, 방문, 문자 등 일체의 추심 연락을 할 수 없다.', src:'법령센터 · 시행령 (2025-11-20 개정)', conf:97 },
+      { num:3, kind:'감독규정', title:'금감원 채권추심 업무 지침', body:'금융기관은 자체 추심 프로세스에서 반복·야간 추심을 자동 차단하는 시스템을 갖추어야 한다. 미준수 시 경영유의 조치 가능.', src:'금감원 행정지도 2024-12', conf:90 },
+      { num:4, kind:'판례', title:'대법원 2020도12457 — 반복 연락의 추심법 위반', body:'채권자가 1일 10회 이상 반복하여 전화한 행위는 채무자에게 공포·불안을 유발하는 행위에 해당하여 채권추심법 위반이다.', src:'대법원 판결', conf:89 }
+    ],
+    cta: [
+      { label:'법령 색인에서 자세히 보기', primary:true, action:"navTo('law',null)" },
+      { label:'내부 규정 체크리스트', primary:false, action:"alert('체크리스트 자동 생성은 다음 릴리즈 예정입니다.')" }
+    ]
+  }
+};
+
+function pickAnswer(q) {
+  if (q.includes('지급명령')) return ANSWERS['지급명령'];
+  if (q.includes('기한') || q.includes('기한이익')) return ANSWERS['기한'];
+  if (q.includes('추심') || q.includes('야간')) return ANSWERS['추심'];
+  return ANSWERS.default;
+}
+
+function startAssistantFlow(q) {
+  const box = document.getElementById('chat-messages');
+  const row = document.createElement('div');
+  row.className = 'msg-row';
+  row.innerHTML = `
+    <div class="msg-avatar">AI</div>
+    <div class="msg-body">
+      <div class="msg-role">뱅크법률집사</div>
+      <div class="trace-box" id="trace-${Date.now()}">
+        <div class="trace-head">
+          <span>데이터 소스 조회 중</span>
+          <span class="trace-toggle" onclick="this.closest('.trace-box').querySelector('.trace-list').classList.toggle('hidden');this.textContent=this.textContent==='접기'?'펼치기':'접기'">접기</span>
+        </div>
+        <div class="trace-list">
+          <div class="trace-step" data-step="1"><div class="step-dot"></div><div class="step-label">법령센터 OpenAPI · 관련 법령·시행령 조회</div><div class="step-meta">대기</div></div>
+          <div class="trace-step" data-step="2"><div class="step-dot"></div><div class="step-label">감독 · 지침 규정 · 금감원·예보 고시 매칭</div><div class="step-meta">대기</div></div>
+          <div class="trace-step" data-step="3"><div class="step-dot"></div><div class="step-label">기관 내부 규정 · 업로드 문서 RAG 검색</div><div class="step-meta">대기</div></div>
+          <div class="trace-step" data-step="4"><div class="step-dot"></div><div class="step-label">내부 사례집 · 실무 처리 사례 매칭</div><div class="step-meta">대기</div></div>
+          <div class="trace-step" data-step="5"><div class="step-dot"></div><div class="step-label">유권해석 · 법제처·금감원 질의회신 조회</div><div class="step-meta">대기</div></div>
+          <div class="trace-step" data-step="6"><div class="step-dot"></div><div class="step-label">판례 · 대법원·하급심 판결 분석</div><div class="step-meta">대기</div></div>
+        </div>
+      </div>
+      <div class="ai-answer"></div>
+    </div>`;
+  box.appendChild(row);
+  scrollBottom();
+
+  const steps = row.querySelectorAll('.trace-step');
+  const timings = [280, 420, 680, 540, 490, 620];
+  let totalDelay = 0;
+  steps.forEach((s, i) => {
+    setTimeout(() => {
+      s.classList.add('running');
+      s.querySelector('.step-meta').textContent = '검색 중';
+      scrollBottom();
+    }, totalDelay);
+    totalDelay += timings[i];
+    setTimeout(() => {
+      s.classList.remove('running');
+      s.classList.add('done');
+      s.querySelector('.step-meta').textContent = timings[i] + 'ms';
+    }, totalDelay);
+  });
+
+  setTimeout(() => {
+    const answer = pickAnswer(q);
+    renderAnswer(row.querySelector('.ai-answer'), answer);
+    // Update trace head
+    const head = row.querySelector('.trace-head span:first-child');
+    if (head) head.textContent = '데이터 소스 조회 완료 · ' + answer.cites.length + '건 인용';
+    scrollBottom();
+  }, totalDelay + 200);
+}
+
+function renderAnswer(container, a) {
+  const chips = a.cites.map(c =>
+    `<div class="src-chip" onclick="scrollToCite(this, ${c.num})"><span class="sc-num">${c.num}</span>${c.kind} · ${escapeHTML(c.title.split('—')[0].trim())}</div>`
+  ).join('');
+
+  const cites = a.cites.map(c => `
+    <div class="cite-card" data-cite="${c.num}">
+      <div class="cite-head">
+        <div class="cite-num">${c.num}</div>
+        <div class="cite-title">${c.title}</div>
+        <div class="cite-kind">${c.kind}</div>
+      </div>
+      <div class="cite-body">${c.body}</div>
+      <div class="cite-meta">
+        <span>${c.src}</span>
+        <span class="conf">신뢰도 ${c.conf}%</span>
+      </div>
+    </div>`).join('');
+
+  const actions = a.cta.map(c =>
+    `<button class="btn ${c.primary ? 'btn-primary' : 'btn-outline'}" onclick="${c.action}">${c.label}</button>`
+  ).join('');
+
+  container.innerHTML = `
+    <div class="msg-text">
+      <p>${a.intro}</p>
+      ${a.body}
+    </div>
+    <div class="src-chips">${chips}</div>
+    <div class="cite-list">${cites}</div>
+    <div class="msg-actions">${actions}<button class="btn btn-ghost" style="margin-left:auto;" onclick="alert('답변을 복사했습니다.')">답변 복사</button></div>
+  `;
+}
+
+function scrollToCite(chipEl, num) {
+  const msg = chipEl.closest('.ai-answer');
+  const target = msg.querySelector(`[data-cite="${num}"]`);
+  if (target) {
+    target.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    target.style.borderColor = '#000';
+    setTimeout(() => target.style.borderColor = '', 1200);
+  }
+}
+
+/* ══════════════════════════════
+   DOC & CALC (unchanged)
+══════════════════════════════ */
 function fillPreview() {
   const map = {
     'p-debtor': document.getElementById('f-debtor')?.value || '홍길동',
@@ -894,7 +1152,7 @@ function calcDebt() {
 // Enter on login
 document.getElementById('inp-name').addEventListener('keydown', e => { if(e.key==='Enter') doLogin(); });
 
-// Demo deep-link: ?demo=dash / ?demo=search etc.
+// Demo deep-link
 const _p = new URLSearchParams(location.search);
 const _demo = _p.get('demo');
 if (_demo) {
